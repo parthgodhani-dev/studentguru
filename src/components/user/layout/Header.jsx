@@ -1,5 +1,4 @@
 import React from 'react'
-import "./headerstyle.css";
 import { Container, Navbar, NavDropdown, Nav } from 'react-bootstrap'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'

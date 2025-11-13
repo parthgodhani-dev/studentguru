@@ -2,7 +2,6 @@ import React from 'react'
 import { Col, Container, Row, Form, Button } from "react-bootstrap";
 import { IconMailFilled } from '@tabler/icons-react';
 import Headtitle from '../common/Headtitle';
-import "./footerstyle.css"
 
 const Newsletter = () => {
   return (

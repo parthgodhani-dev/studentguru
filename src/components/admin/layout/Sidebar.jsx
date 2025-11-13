@@ -6,7 +6,6 @@ import { Nav } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../../store/authSlice";
 import authService from "../../../appwrite/auth";
-import "./layout.css"
 
 const Sidebar = ({ onToggleSidebar }) => {
   const navigate = useNavigate();

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom' 
-import "./footerstyle.css"
 import Newsletter from './Newsletter'
 import { IconBrandFacebook, IconBrandInstagram, IconBrandYoutube } from '@tabler/icons-react';
 
