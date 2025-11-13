@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconMenu3, IconUserStar } from '@tabler/icons-react';
 import { useSelector } from "react-redux";
-import "./Layout.css"
+import "./layout.css"
 
 const Header = ({ onToggleSidebar }) => {
 
