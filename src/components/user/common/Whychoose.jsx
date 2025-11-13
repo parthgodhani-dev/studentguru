@@ -1,0 +1,88 @@
+import React from 'react'
+import { Col, Container, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import Headtitle from './Headtitle'
+
+const Whychoose = () => {
+
+    const reasons = [
+        {
+            img: "/consulting.png",
+            title: "Expert Mentors",
+            content: "Learn directly from industry professionals who guide you at every step.",
+        },
+        {
+            img: "/knowledge.png",
+            title: "Personalized Learning",
+            content: "Every student gets a custom learning path designed for their goals.",
+        },
+        {
+            img: "/flexible.png",
+            title: "Real-World Projects",
+            content: "Build real projects to strengthen your skills and portfolio.",
+        },
+        {
+            img: "/goal.png",
+            title: "Career Support",
+            content: "Get resume help, mock interviews, and placement guidance.",
+        },
+        {
+            img: "/project.png",
+            title: "Flexible Schedule",
+            content: "Learn anytime, anywhere with our self-paced modules.",
+        },
+        {
+            img: "/help.png",
+            title: "Community Support",
+            content: "Join a vibrant community of students and mentors who help you grow.",
+        },
+    ]
+
+  return (
+    <>
+        <div className="whychoose">
+            <Container>
+                <Row className="justify-content-center">
+                    <Col sm={10}>
+                        <Headtitle
+                            className="text-center"
+                            topTitle="Why Choose Us ???"
+                            title="Fast Track Your Learning With a Simplified One-To-One MenToring"
+                            headingTag="h2"
+                            headingClass="maintitle h3"
+                            underline={true}
+                            underlineClass="underline h3"
+                            underlineText="Your Learning With a Simplified"
+                        />
+                    </Col>
+                </Row>
+                <Row>
+                    {
+                          reasons.map((whychoose, index) => (
+                              <Col sm={4} key={index}>
+                                  <div className="infobox">
+                                      <img src={whychoose.img} alt={whychoose.title} />
+                                      <h4>{whychoose.title}</h4>
+                                      <p>{whychoose.content}</p>
+                                  </div>
+                              </Col>
+                          ))
+                    }
+                    
+                </Row>
+                <Row className="justify-content-center">
+                    <Col sm={4}>
+                        <div className="buttons d-flex align-items-center justify-content-between">
+                            <Link to="/" className='button'>Get Start Now</Link>
+                            <Link to="/" className='button'>Learn More</Link>
+                        </div>
+                    </Col>
+                </Row>
+
+            </Container>
+        </div>
+    </>
+  )
+}
+
+export default Whychoose

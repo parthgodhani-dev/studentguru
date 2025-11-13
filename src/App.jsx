@@ -1,0 +1,145 @@
+import React, { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate, Link } from "react-router-dom";
+import {login , logout} from './store/authSlice'
+import authService from './appwrite/auth'
+import { useDispatch, useSelector } from "react-redux";
+import './App.css'
+import Loader from './components/Loader';
+import Protected from './components/Protected';
+
+// user pages
+import Worktest from './components/user/pages/Worktest';
+import Home from './components/user/pages/Home';
+import About from './components/user/pages/About';
+import Services from './components/user/pages/Services'
+import Bloglisting from './components/user/pages/Bloglisting';
+import Blogsingle from './components/user/pages/Blogsingle';
+import Contact from './components/user/pages/Contact';
+import Profile from './components/user/pages/Profile';
+import Login from './components/user/pages/Login';
+import Register from './components/user/pages/Register';
+import Header from './components/user/layout/Header';
+import Footer from './components/user/layout/Footer';
+import Notfound from './components/user/pages/Notfound';
+
+// admin pages
+import AdminHeader from './components/admin/layout/Header';
+import AdminSidebar from './components/admin/layout/Sidebar';
+import Dashboard from './components/admin/pages/Dashboard';
+import AdminLogin from './components/admin/pages/Login';
+import Listingblog from './components/admin/pages/blog/Listingblog';
+import Addblog from './components/admin/pages/blog/Addblog';
+import Editblog from './components/admin/pages/blog/Editblog';
+import Listingtestimo from './components/admin/pages/testimonial/Listingtestimo';
+import Addtestimo from './components/admin/pages/testimonial/Addtestimo';
+import Edittestimo from './components/admin/pages/testimonial/Edittestimo';
+
+
+function App() {
+
+  const dispatch = useDispatch();
+  const { userData } = useSelector((state) => state.auth);
+  const [loading, setLoading] = useState(true);
+  const [isSidebarActive, setSidebarActive] = useState(false);
+  const toggleSidebar = () => {
+    setSidebarActive(!isSidebarActive);
+  };
+
+  useEffect(() => {
+    const checkUser = async () => {
+      try {
+        const currentUser = await authService.getCurrentUser();
+        console.log("🧠 currentUser:", currentUser);
+        console.log("🧠 Redux userData:", userData);
+        console.log("🧠 Role in App:", currentUser?.role);
+
+        if (currentUser) {
+          dispatch(login(currentUser));
+        } else {
+          dispatch(logout());
+        }
+      } catch (error) {
+        console.error("Session check failed:", error);
+        dispatch(logout());
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkUser();
+  }, [dispatch]);
+
+  if (loading) return <Loader message="Checking session..." />;
+
+  const isAdmin = userData?.role;
+  const isLoggedIn = !!userData;
+
+  return (
+    <>
+      <Router>
+        <Routes>
+            <Route
+              path="/admin"
+              element={
+                isAdmin === "admin" ? (
+                  <Navigate to="/admin/dashboard" replace />
+                ) : (
+                  <Protected authentication={false}>
+                    <AdminLogin />
+                  </Protected>
+                )
+              }
+            />
+            <Route path="/admin/*" element={isAdmin === "admin" ? (
+              <div className={`dashboard-main ${isSidebarActive ?  "dashboard-compact" : ""}`}>
+                    {isLoggedIn && <AdminSidebar onToggleSidebar={toggleSidebar} />}
+                    {isLoggedIn && <AdminHeader onToggleSidebar={toggleSidebar} />}
+                    <div className="dashboard-content">
+                      <Routes>
+                        {/* <Route path="/admin" element={<Protected allowedRole="admin"><Dashboard /></Protected>} /> */}
+                        <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/listingblog" element={<Listingblog />} />
+                        <Route path="/addblog" element={<Addblog />} />
+                        <Route path="/editblog/:slug" element={<Editblog />} />
+                        <Route path="/listingtestimonial" element={<Listingtestimo />} />
+                        <Route path="/addtestimonial" element={<Addtestimo />} />
+                        <Route path="/edittestimonial/:slug" element={<Edittestimo />} />
+                        <Route path="*" element={<Dashboard />} />
+                      </Routes>
+                    </div>
+                  </div>
+                ) : (
+                  <Navigate to="/admin" replace />
+                )
+              }
+            />
+            <Route
+              path="/*"
+              element={
+                <>
+                  <Header />
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path='/worktest' element={<Worktest />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/services" element={<Services />} />
+                    <Route path="/blog" element={<Bloglisting />} />
+                    <Route path="/blog/:slug" element={<Blogsingle />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/login" element={<Protected authentication={false}><Login /></Protected>}/>
+                    <Route path="/register" element={<Protected authentication={false}><Register /></Protected>}/>
+                    <Route path="*" element={<Notfound />} />
+                  </Routes>
+                  <Footer />
+                </>
+              }
+            />
+        </Routes>
+      </Router>
+    </>
+  );
+
+}
+
+export default App

@@ -1,0 +1,107 @@
+import React, { useState } from 'react'
+import { Col, Container, Row, Form, Button, Toast, ToastContainer } from 'react-bootstrap'
+import { Link, useNavigate } from 'react-router-dom'
+import { login as authLogin } from '../../../store/authSlice'
+import { useDispatch } from 'react-redux'
+import authService from '../../../appwrite/auth'
+import { useForm } from "react-hook-form"
+import { IconMailFilled, IconKeyFilled } from '@tabler/icons-react';
+
+const Login = () => {
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const { register, handleSubmit } = useForm();
+    const [error, setError] = useState("")
+    const [showToast, setShowToast] = useState(false)
+
+    const login = async (data) => {
+        setError("")
+        try {
+            const session = await authService.login(data)
+            if (session) {
+                const userData = await authService.getCurrentUser()
+                if (userData) {
+                    dispatch(authLogin(userData))
+                    setShowToast(true)
+
+                    setTimeout(() => {
+                        setShowToast(false)
+                        navigate("/admin/dashboard")
+                    }, 2000)
+                }
+            }
+        } catch (error) {
+            setError(error.message || "Login failed. Please try again.");
+        }
+    }
+
+    return (
+        <>
+            <section className='auth_section'>
+                <Container>
+                    <Row>
+                        <Col sm={12}>
+                            <div className="headtitle">
+                                <span>Access your admin dashboard</span>
+                                <h2>Admin Login</h2>
+                            </div>
+                        </Col>
+                    </Row>
+
+                    <Row className='align-items-center justify-content-center'>
+                        <Col sm={5}>
+                            <div className="authform mt-0">
+                                {error && <p className='text-danger text-center'>{error}</p>}
+                                <Form onSubmit={handleSubmit(login)}>
+                                    <Form.Group className="mb-3 field" controlId="formBasicEmail">
+                                        <Form.Label>Email address</Form.Label>
+                                        <IconMailFilled stroke={1} width={20} height={20} />
+                                        <Form.Control
+                                            type="email"
+                                            placeholder="Enter your email"
+                                            {...register("email", { required: true })}
+                                        />
+                                    </Form.Group>
+
+                                    <Form.Group className="mb-3 field" controlId="formBasicPassword">
+                                        <Form.Label>Password</Form.Label>
+                                        <IconKeyFilled stroke={1} width={20} height={20} />
+                                        <Form.Control
+                                            type="password"
+                                            placeholder="Enter your password"
+                                            {...register("password", { required: true })}
+                                            autoComplete=''
+                                        />
+                                    </Form.Group>
+
+                                    <Button variant="secondary" type="submit">
+                                        Sign In
+                                    </Button>
+                                </Form>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+                <ToastContainer position="bottom-end" className="p-3">
+                    <Toast
+                        onClose={() => setShowToast(false)}
+                        show={showToast}
+                        delay={2000}
+                        autohide
+                        bg="success"
+                    >
+                        <Toast.Header>
+                            <strong className="me-auto">Login Success</strong>
+                        </Toast.Header>
+                        <Toast.Body className="text-white">
+                            You have logged in successfully!
+                        </Toast.Body>
+                    </Toast>
+                </ToastContainer>
+            </section>
+        </>
+    )
+}
+
+export default Login
