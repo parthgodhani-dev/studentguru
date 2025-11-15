@@ -28,7 +28,7 @@ const AboutContent = () => {
                 <Row className='align-items-center justify-content-between rowpy'>
                     <Col sm={6}>
                         <div className="aboutimg">
-                            <img src="/public/about_c.svg" alt="" />
+                            <img src="/about_c.svg" alt="" />
                         </div>
                     </Col>
                     <Col sm={5}>
@@ -49,14 +49,14 @@ const AboutContent = () => {
                     </Col>
                     <Col sm={5}>
                         <div className="aboutimg">
-                            <img src="/public/about_a.svg" alt="" />
+                            <img src="/about_a.svg" alt="" />
                         </div>
                     </Col>
                 </Row>
                 <Row className='align-items-center justify-content-between rowpy'>
                     <Col sm={6}>
                         <div className="aboutimg">
-                            <img src="/public/about_b.svg" alt="" />
+                            <img src="/about_b.svg" alt="" />
                         </div>
                     </Col>
                     <Col sm={5}>
