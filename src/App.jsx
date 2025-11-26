@@ -21,6 +21,8 @@ import Register from './components/user/pages/Register';
 import Header from './components/user/layout/Header';
 import Footer from './components/user/layout/Footer';
 import Notfound from './components/user/pages/Notfound';
+import Courses from './components/user/pages/Courses';
+import Coursesingle from './components/user/pages/Coursesingle';
 
 // admin pages
 import AdminHeader from './components/admin/layout/Header';
@@ -33,6 +35,12 @@ import Editblog from './components/admin/pages/blog/Editblog';
 import Listingtestimo from './components/admin/pages/testimonial/Listingtestimo';
 import Addtestimo from './components/admin/pages/testimonial/Addtestimo';
 import Edittestimo from './components/admin/pages/testimonial/Edittestimo';
+import Listingmember from './components/admin/pages/expertteam/Listingmember';
+import Addmember from './components/admin/pages/expertteam/Addmember';
+import Editmember from './components/admin/pages/expertteam/Editmember';
+import Listingcourse from './components/admin/pages/maincourses/Listingcourses';
+import Addcourse from './components/admin/pages/maincourses/Addcourses';
+import Editcourse from './components/admin/pages/maincourses/Editcourses';
 
 
 function App() {
@@ -104,6 +112,12 @@ function App() {
                         <Route path="/listingtestimonial" element={<Listingtestimo />} />
                         <Route path="/addtestimonial" element={<Addtestimo />} />
                         <Route path="/edittestimonial/:slug" element={<Edittestimo />} />
+                        <Route path="/listingmember" element={<Listingmember />} />
+                        <Route path="/addmember" element={<Addmember />} />
+                        <Route path="/editmember/:slug" element={<Editmember />} />
+                        <Route path="/listingcourse" element={<Listingcourse />} />
+                        <Route path="/addcourse" element={<Addcourse />} />
+                        <Route path="/editcourse/:slug" element={<Editcourse />} />
                         <Route path="*" element={<Dashboard />} />
                       </Routes>
                     </div>
@@ -123,6 +137,9 @@ function App() {
                     <Route path='/worktest' element={<Worktest />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/services" element={<Services />} />
+                    <Route path="/courses" element={<Courses />} />
+                    <Route path="/courses/:slug" element={<Coursesingle />} />
+                    {/* <Route path="/courses/coursesingle" element={<Coursesingle />} /> */}
                     <Route path="/blog" element={<Bloglisting />} />
                     <Route path="/blog/:slug" element={<Blogsingle />} />
                     <Route path="/contact" element={<Contact />} />

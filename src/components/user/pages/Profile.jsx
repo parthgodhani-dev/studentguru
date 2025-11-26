@@ -29,10 +29,6 @@ const Profile = () => {
                                 underlineText="Your Profile"
                                 subTitle="View and manage your profile information here."
                             />
-                            <div className="headtitle">
-                                <span></span>
-                                <h2></h2>
-                            </div>
                         </Col>
                     </Row>
                     <Row className='justify-content-center'>

@@ -39,8 +39,39 @@ const Sidebar = ({ onToggleSidebar }) => {
             <Link className="dashboard-nav-item active" to="/admin/dashboard">
               <IconHomeSpark size={20} stroke={2} /> Dashboard
             </Link>
+
             <div className={`dashboard-nav-dropdown ${openDropdown === 1 ? "show" : ""}`}>
               <Link className="dashboard-nav-item dashboard-nav-dropdown-toggle" onClick={() => handleToggle(1)}>
+                <IconListDetails size={20} stroke={2} /> Course
+              </Link>
+              <div className="dashboard-nav-dropdown-menu">
+                <Link to="/admin/addcourse" className="dashboard-nav-dropdown-item"><IconPlaylistAdd size={20} stroke={2} /> Add Course</Link>
+                <Link to="/admin/listingcourse" className="dashboard-nav-dropdown-item"><IconList size={20} stroke={2} /> View Course</Link>
+              </div>
+            </div>
+
+            <div className={`dashboard-nav-dropdown ${openDropdown === 2 ? "show" : ""}`}>
+              <Link className="dashboard-nav-item dashboard-nav-dropdown-toggle" onClick={() => handleToggle(2)}>
+                <IconListDetails size={20} stroke={2} /> Team Member
+              </Link>
+              <div className="dashboard-nav-dropdown-menu">
+                <Link to="/admin/addmember" className="dashboard-nav-dropdown-item"><IconPlaylistAdd size={20} stroke={2} /> Add Member</Link>
+                <Link to="/admin/listingmember" className="dashboard-nav-dropdown-item"><IconList size={20} stroke={2} /> View Member</Link>
+              </div>
+            </div>
+
+            <div className={`dashboard-nav-dropdown ${openDropdown === 3 ? "show" : ""}`}>
+              <Link className="dashboard-nav-item dashboard-nav-dropdown-toggle" onClick={() => handleToggle(3)}>
+                <IconListDetails size={20} stroke={2} /> Testimonial
+              </Link>
+              <div className="dashboard-nav-dropdown-menu">
+                <Link to="/admin/addtestimonial" className="dashboard-nav-dropdown-item"><IconPlaylistAdd size={20} stroke={2} /> Add Testimonial</Link>
+                <Link to="/admin/listingtestimonial" className="dashboard-nav-dropdown-item"><IconList size={20} stroke={2} /> View Testimonial</Link>
+              </div>
+            </div>
+
+            <div className={`dashboard-nav-dropdown ${openDropdown === 4 ? "show" : ""}`}>
+              <Link className="dashboard-nav-item dashboard-nav-dropdown-toggle" onClick={() => handleToggle(4)}>
                 <IconListDetails size={20} stroke={2} /> Blog
               </Link>
               <div className="dashboard-nav-dropdown-menu">
@@ -49,15 +80,7 @@ const Sidebar = ({ onToggleSidebar }) => {
               </div>
             </div>
 
-            <div className={`dashboard-nav-dropdown ${openDropdown === 2 ? "show" : ""}`}>
-              <Link className="dashboard-nav-item dashboard-nav-dropdown-toggle" onClick={() => handleToggle(2)}>
-                <IconListDetails size={20} stroke={2} /> Testimonial
-              </Link>
-              <div className="dashboard-nav-dropdown-menu">
-                <Link to="/admin/addtestimonial" className="dashboard-nav-dropdown-item"><IconPlaylistAdd size={20} stroke={2} /> Add Testimonial</Link>
-                <Link to="/admin/listingtestimonial" className="dashboard-nav-dropdown-item"><IconList size={20} stroke={2} /> View Testimonial</Link>
-              </div>
-            </div>
+            
 
             <div className="nav-item-divider" />
             <Link className="dashboard-nav-item" to={"/"}>

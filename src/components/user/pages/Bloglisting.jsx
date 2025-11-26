@@ -88,14 +88,14 @@ const Bloglisting = () => {
                     <Col sm={12}>
                         <Headtitle
                             className="text-center"
-                            topTitle="Get Started With a Free Tutorials"
+                            topTitle="Get Started With a Free courses"
                             title="Our Latest Tutorial"
                             headingTag="h1"
                             headingClass="maintitle"
                             underline={true}
                             underlineClass="underline"
                             underlineText="Latest Tutorial"
-                            subTitle="Our Latest Tutorials and Learning Resources"
+                            subTitle="Our Latest courses and Learning Resources"
                         />
                     </Col>
                 </Row>

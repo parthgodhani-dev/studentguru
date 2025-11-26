@@ -3,6 +3,7 @@ import PageBanner from '../common/PageBanner.jsx'
 import AboutCounter from '../common/AboutCounter.jsx'
 import AboutContent from '../common/AboutContent.jsx'
 import AboutStories from '../common/AboutStories.jsx'
+import Aboutteam from '../common/Aboutteam.jsx'
 
 
 const About = () => {
@@ -17,6 +18,7 @@ const About = () => {
         <AboutCounter />
         <AboutContent />
         <AboutStories />
+        <Aboutteam/>
     </>
   )
 }

@@ -50,7 +50,7 @@ const Blogslider = () => {
                     <Col sm={3} className='text-center'>
                         <Headtitle
                             className="text-center mb-3"
-                            topTitle="Get Started With a Free Tutorials"
+                            topTitle="Get Started With a Free courses"
                             title="Boost Your Career With Advanced Skill."
                             headingTag="h2"
                             headingClass="maintitle"
@@ -58,7 +58,7 @@ const Blogslider = () => {
                             underlineClass="underline"
                             underlineText="Boost Your Career"
                         />
-                        <Link to="/" className='button'>View All Tutorials</Link>
+                        <Link to="/" className='button'>View All courses</Link>
                     </Col>
                     <Col sm={9}>
                         <div className="blogslider_box">

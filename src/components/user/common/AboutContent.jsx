@@ -19,10 +19,6 @@ const AboutContent = () => {
                             underlineClass="underline h3"
                             underlineText="One-To-One MenToring"
                         />
-                        <div className="headtitle">
-                            <span></span>
-                            <h2></h2>
-                        </div>
                     </Col>
                 </Row>
                 <Row className='align-items-center justify-content-between rowpy'>

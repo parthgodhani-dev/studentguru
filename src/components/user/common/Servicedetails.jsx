@@ -8,7 +8,7 @@ const Servicedetails = () => {
     {
       img: "/interactive-video-learning.svg",
       title: "Interactive Video Learning",
-      content: "Our high-quality, topic-based video tutorials make complex subjects simple. Each module includes practice tasks and real examples, helping students grasp concepts visually."
+      content: "Our high-quality, topic-based video courses make complex subjects simple. Each module includes practice tasks and real examples, helping students grasp concepts visually."
     }, 
     {
       img: "/one-to-one-mentorship.svg",
