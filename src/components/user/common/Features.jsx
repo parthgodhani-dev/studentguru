@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Slider from "react-slick";
 import { Col, Container, Row } from 'react-bootstrap'
 
 const Features = () => {
 
-    const [sliderKey, setSliderKey] = useState(0);
-    
     useEffect(() => {
-        setTimeout(() => {
-            setSliderKey(prev => prev + 1);
+        const timer = setTimeout(() => {
             window.dispatchEvent(new Event("resize"));
-        }, 200);
+        }, 50);
+        return () => clearTimeout(timer);
     }, []);
 
     const settings = {
@@ -89,7 +87,7 @@ const Features = () => {
                 <Row className="justify-content-center">
                     <Col md={12}>
                         <div className="Features_slider">
-                            <Slider key={sliderKey} {...settings}>
+                            <Slider {...settings}>
                                 {featuresSlideInfo.map((feature, index) => (
                                     <div className="features_box" key={index}>
                                         <div className="featwrap">

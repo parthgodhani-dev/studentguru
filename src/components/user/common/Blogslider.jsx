@@ -7,13 +7,11 @@ import Headtitle from './Headtitle';
 
 const Blogslider = () => {
 
-    const [sliderKey, setSliderKey] = useState(0);
-        
     useEffect(() => {
-        setTimeout(() => {
-            setSliderKey(prev => prev + 1);
+        const timer = setTimeout(() => {
             window.dispatchEvent(new Event("resize"));
-        }, 200);
+        }, 50);
+        return () => clearTimeout(timer);
     }, []);
 
     const settings = {
@@ -97,7 +95,7 @@ const Blogslider = () => {
                     <Col xl={9} md={8}>
                         <div className="blogslider_box">
                             <div className="blog_slider">
-                            <Slider key={sliderKey} {...settings}>
+                            <Slider {...settings}>
                                 {
                                     blogs.length > 0 ? (
                                         blogs.map((blog) => {

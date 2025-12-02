@@ -5,13 +5,12 @@ import Headtitle from './Headtitle';
 import testimoServices from "../../../appwrite/awtestimo"
 
 const Studentlove = () => {
-    const [sliderKey, setSliderKey] = useState(0);
 
     useEffect(() => {
-        setTimeout(() => {
-            setSliderKey(prev => prev + 1);
+        const timer = setTimeout(() => {
             window.dispatchEvent(new Event("resize"));
-        }, 200);
+        }, 50);
+        return () => clearTimeout(timer);
     }, []);
 
     const settings = {
@@ -98,7 +97,7 @@ const Studentlove = () => {
                                     <Spinner animation="border" />
                                 </div>
                             ) : (
-                                <Slider key={sliderKey} {...settings}>
+                                <Slider {...settings}>
                                     {
                                         reviews.map((review) => (
                                             <div className="testimo" key={review.$id}>

@@ -6,13 +6,11 @@ import teamServices from '../../../appwrite/awteam';
 
 const Aboutteam = () => {
 
-    const [sliderKey, setSliderKey] = useState(0);
-        
     useEffect(() => {
-        setTimeout(() => {
-            setSliderKey(prev => prev + 1);
+        const timer = setTimeout(() => {
             window.dispatchEvent(new Event("resize"));
-        }, 200);
+        }, 50);
+        return () => clearTimeout(timer);
     }, []);
 
     const settings = {
@@ -101,7 +99,7 @@ const Aboutteam = () => {
                                     <Spinner animation="border" />
                                 </div>
                             ) : (
-                                <Slider key={sliderKey} {...settings}>
+                                <Slider {...settings}>
                                         {memberdata.map((m, index) => (
                                             <Col md={3} key={index} className='mb-4'>
                                                 <Card>
