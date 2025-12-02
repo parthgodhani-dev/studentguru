@@ -1,10 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Col, Container, Row, Card, Spinner } from 'react-bootstrap';
 import Slider from "react-slick";
 import Headtitle from './Headtitle'
 import teamServices from '../../../appwrite/awteam';
 
 const Aboutteam = () => {
+
+    const [sliderKey, setSliderKey] = useState(0);
+        
+    useEffect(() => {
+        setTimeout(() => {
+            setSliderKey(prev => prev + 1);
+            window.dispatchEvent(new Event("resize"));
+        }, 200);
+    }, []);
 
     const settings = {
         dots: false,
@@ -92,7 +101,7 @@ const Aboutteam = () => {
                                     <Spinner animation="border" />
                                 </div>
                             ) : (
-                                <Slider {...settings}>
+                                <Slider key={sliderKey} {...settings}>
                                         {memberdata.map((m, index) => (
                                             <Col md={3} key={index} className='mb-4'>
                                                 <Card>

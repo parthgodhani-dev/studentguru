@@ -7,6 +7,15 @@ import Headtitle from './Headtitle';
 
 const Blogslider = () => {
 
+    const [sliderKey, setSliderKey] = useState(0);
+        
+    useEffect(() => {
+        setTimeout(() => {
+            setSliderKey(prev => prev + 1);
+            window.dispatchEvent(new Event("resize"));
+        }, 200);
+    }, []);
+
     const settings = {
         dots: false,
         infinite: true,
@@ -88,7 +97,7 @@ const Blogslider = () => {
                     <Col xl={9} md={8}>
                         <div className="blogslider_box">
                             <div className="blog_slider">
-                                <Slider {...settings}>
+                            <Slider key={sliderKey} {...settings}>
                                 {
                                     blogs.length > 0 ? (
                                         blogs.map((blog) => {

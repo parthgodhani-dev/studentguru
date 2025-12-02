@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Col, Container, Row, Spinner } from 'react-bootstrap'
 import Slider from "react-slick";
 import Headtitle from './Headtitle';
 
 const AboutStories = () => {
+
+    const [sliderKey, setSliderKey] = useState(0);
+        
+    useEffect(() => {
+        setTimeout(() => {
+            setSliderKey(prev => prev + 1);
+            window.dispatchEvent(new Event("resize"));
+        }, 200);
+    }, []);
 
     const settings = {
         dots: false,
@@ -44,7 +53,7 @@ const AboutStories = () => {
                     <Row className="justify-content-center">
                         <Col md={8} sm={10}>
                             <div className="storie_slider">
-                                <Slider {...settings}>
+                                <Slider key={sliderKey} {...settings}>
                                     <div className="storie">
                                         <div className="storiewrap">
                                             <h5>Learning Beyond Books</h5>
