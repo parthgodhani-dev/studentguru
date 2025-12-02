@@ -20,7 +20,7 @@ import Profile from './components/user/pages/Profile';
 import Changepassword from './components/user/pages/Changepassword';
 import Login from './components/user/pages/Login';
 import Register from './components/user/pages/Register';
-import Forgotpassword from './components/user/pages/forgotpassword';
+import Forgotpassword from "./components/user/pages/Forgotpassword"
 import Header from './components/user/layout/Header';
 import Footer from './components/user/layout/Footer';
 import Notfound from './components/user/pages/Notfound';
