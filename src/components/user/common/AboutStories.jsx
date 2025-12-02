@@ -12,7 +12,15 @@ const AboutStories = () => {
         speed: 2000,
         autoplaySpeed: 3000,
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 767,
+                settings: {
+                    arrows: false
+                }
+            }
+        ]
     };
 
     return (
@@ -20,7 +28,7 @@ const AboutStories = () => {
             <div className="studentstories">
                 <Container>
                     <Row className="justify-content-center">
-                        <Col sm={6}>
+                        <Col xl={6} lg={8} md={10}>
                             <Headtitle
                                 className="text-center"
                                 topTitle="Success Stories"
@@ -33,9 +41,9 @@ const AboutStories = () => {
                             />
                         </Col>
                     </Row>
-                    <div className="storie_slider">
-                        <Row className="justify-content-center">
-                            <Col sm={8}>
+                    <Row className="justify-content-center">
+                        <Col md={8} sm={10}>
+                            <div className="storie_slider">
                                 <Slider {...settings}>
                                     <div className="storie">
                                         <div className="storiewrap">
@@ -128,9 +136,9 @@ const AboutStories = () => {
                                         </div>
                                     </div>
                                 </Slider>
-                            </Col>
-                        </Row>
-                    </div>
+                            </div>
+                        </Col>
+                    </Row>
                 </Container>
             </div>
         </>

@@ -94,8 +94,12 @@ const Editblog = () => {
     <section>
       <Container>
         <Row>
-          <Col sm={12} className="mb-3">
-            <h1>Edit Blog</h1>
+          <Col sm={12} className='mb-3'>
+              <div className="d-flex align-items-center justify-content-between">
+                  <div className="admintitle">
+                      <h1>Edit Blog</h1>
+                  </div>
+              </div>
           </Col>
           <Col md={12}>
             <Card className="admincard">

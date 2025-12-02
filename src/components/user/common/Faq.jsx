@@ -53,11 +53,11 @@ const Faq= () => {
                         />
                     </Col>
                 </Row>
-                <Row className="align-items-end justify-content-between">
-                    <Col md={4}>
+                <Row className="align-items-end justify-content-between gap-md-0 gap-4">
+                    <Col lg={4} md={3}>
                         <img src="/faq.svg" alt="" />
                     </Col>
-                    <Col md={7}>
+                    <Col lg={7} md={9}>
                         <Accordion defaultActiveKey="0" flush>
                             {faqs.map((faq, index) => (
                                 <Accordion.Item eventKey={index.toString()} key={index}>

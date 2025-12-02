@@ -7,6 +7,7 @@ import { IconPlayerPlayFilled } from "@tabler/icons-react"
 import maincoursesServices from '../../../appwrite/awmaincourses'
 import subCourseServices from "../../../appwrite/awsubcourses"
 import lessonsServices from "../../../appwrite/awlessons"
+import Loader from '../../Loader';
 
 const Coursesingle = () => {
 
@@ -14,9 +15,11 @@ const Coursesingle = () => {
   const [show, setShow] = useState(false);
   const [fullscreen, setFullscreen] = useState(true);
   const [videoUrl, setVideoUrl] = useState("");
+  const [lessontitle, setLessontitle] = useState("");
   const handleClose = () => {
     setShow(false);
     setVideoUrl("");
+    setLessontitle("");
   };
 
   const [courses, setCourses] = useState(null)
@@ -25,9 +28,10 @@ const Coursesingle = () => {
 
   const [loading, setLoading] = useState(true);
 
-  function handleShow(breakpoint, url) {
+  function handleShow(breakpoint, url, title) {
     setFullscreen(breakpoint);
     setVideoUrl(url);
+    setLessontitle(title)
     setShow(true);
   } 
 
@@ -71,7 +75,7 @@ const Coursesingle = () => {
   }, [])
 
   if (loading) {
-    return <div className="text-center py-5">Loading...</div>;
+    return <Loader message="Loading..." />;
   }
 
   if (!courses) {
@@ -128,7 +132,11 @@ const Coursesingle = () => {
                                 <strong>{lesson.lessontitle}</strong>
                                 <Button
                                   className='button'
-                                  onClick={() => handleShow(true, convertYoutubeUrl(lesson.lessonvideo))}
+                                  onClick={() => handleShow(
+                                    true,
+                                    convertYoutubeUrl(lesson.lessonvideo),
+                                    lesson.lessontitle
+                                  )}
                                 >
                                   <IconPlayerPlayFilled />
                                 </Button>
@@ -151,13 +159,15 @@ const Coursesingle = () => {
       
       <Modal show={show} fullscreen={fullscreen} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Course Video</Modal.Title>
+          {lessontitle ? <Modal.Title className='mb-0 h5'>{lessontitle}</Modal.Title> : <Modal.Title className='mb-0'>Tutorial Video</Modal.Title>}
+          
+          
         </Modal.Header>
         <Modal.Body>
           {videoUrl ? (
             <iframe
               width="100%"
-              height="500"
+              height="100%"
               src={videoUrl}
               title="Lesson Video"
               frameBorder="0"

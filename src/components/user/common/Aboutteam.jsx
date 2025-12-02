@@ -14,7 +14,32 @@ const Aboutteam = () => {
         speed: 2000,
         autoplaySpeed: 3000,
         slidesToShow: 3,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    arrows: false
+                }
+            },
+            {
+                breakpoint: 479,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: false
+                }
+            }
+        ]
     };
 
     const [memberdata, setMemberdata] = useState([])
@@ -46,7 +71,7 @@ const Aboutteam = () => {
         <section className="ourteam">
             <Container>
                 <Row className="justify-content-center">
-                    <Col sm={6}>
+                    <Col xl={6} lg={8} md={10}> 
                         <Headtitle
                             className="text-center"
                             topTitle="Our Expert Team"
@@ -61,7 +86,7 @@ const Aboutteam = () => {
                 </Row>
                 <div className="teamslider">
                     <Row className='justify-content-center'>
-                        <Col sm={10}>
+                        <Col md={10}>
                             {loading ? (
                                 <div className="text-center py-4">
                                     <Spinner animation="border" />

@@ -93,78 +93,80 @@ const Listingmember = () => {
                                             <Spinner animation="border" />
                                         </div>
                                     ) : (
-                                        <table className="GeneratedTable">
-                                            <thead>
-                                                <tr>
-                                                    <th width="10%">Image</th>
-                                                    <th width="20%">Name</th>
-                                                    <th width="35%">Designation</th>
-                                                    <th width="15%">Status</th>
-                                                    <th width="20%" className="text-end">Action</th>
-                                                </tr>
-                                            </thead>
+                                        <div class="table-responsive">
+                                            <table className="list-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th width="10%">Image</th>
+                                                        <th width="20%">Name</th>
+                                                        <th width="35%">Designation</th>
+                                                        <th width="15%">Status</th>
+                                                        <th width="20%" className="text-end">Action</th>
+                                                    </tr>
+                                                </thead>
 
-                                            <tbody>
-                                                {members.length > 0 ? (
-                                                    members.map((member) => (
-                                                        <tr key={member.$id}>
-                                                            <td>
-                                                                {member.expertimg ? (
-                                                                    <img
-                                                                        className="img-thumbnail"
-                                                                        src={teamServices.getFilePreview(member.expertimg)}
-                                                                        alt={member.name}
-                                                                        width={100}
-                                                                    />
-                                                                ) : (
-                                                                    <span className="text-muted">No Image</span>
-                                                                )}
-                                                            </td>
+                                                <tbody>
+                                                    {members.length > 0 ? (
+                                                        members.map((member) => (
+                                                            <tr key={member.$id}>
+                                                                <td>
+                                                                    {member.expertimg ? (
+                                                                        <img
+                                                                            className="img-thumbnail"
+                                                                            src={teamServices.getFilePreview(member.expertimg)}
+                                                                            alt={member.name}
+                                                                            width={100}
+                                                                        />
+                                                                    ) : (
+                                                                        <span className="text-muted">No Image</span>
+                                                                    )}
+                                                                </td>
 
-                                                            <td className="fw-medium">{member.name}</td>
-                                                            <td className="fw-medium">{member.designation}</td>
-                                                            <td className="fw-medium">
-                                                                <Form.Select
-                                                                    value={member.status}
-                                                                    onChange={(e) =>
-                                                                        handleStatusChange(member.$id, e.target.value)
-                                                                    }
-                                                                >
-                                                                    <option value="active">Active</option>
-                                                                    <option value="inactive">Inactive</option>
-                                                                </Form.Select>
-                                                            </td>
-
-                                                            <td>
-                                                                <div className="d-flex align-items-center justify-content-end gap-2">
-                                                                    <Button
-                                                                        className="button icon"
-                                                                        as={Link}
-                                                                        to={`/admin/editmember/${member.$id}`}
+                                                                <td className="fw-medium">{member.name}</td>
+                                                                <td className="fw-medium">{member.designation}</td>
+                                                                <td className="fw-medium">
+                                                                    <Form.Select
+                                                                        value={member.status}
+                                                                        onChange={(e) =>
+                                                                            handleStatusChange(member.$id, e.target.value)
+                                                                        }
                                                                     >
-                                                                        <IconEdit size={20} stroke={2} />
-                                                                    </Button>
+                                                                        <option value="active">Active</option>
+                                                                        <option value="inactive">Inactive</option>
+                                                                    </Form.Select>
+                                                                </td>
+
+                                                                <td>
+                                                                    <div className="d-flex align-items-center justify-content-end gap-2">
+                                                                        <Button
+                                                                            className="button icon"
+                                                                            as={Link}
+                                                                            to={`/admin/editmember/${member.$id}`}
+                                                                        >
+                                                                            <IconEdit size={20} stroke={2} />
+                                                                        </Button>
 
 
-                                                                    <Button
-                                                                        className="button icon"
-                                                                        onClick={() => handleDelete(member.$id)}
-                                                                    >
-                                                                        <IconTrash size={20} stroke={2} />
-                                                                    </Button>
-                                                                </div>
+                                                                        <Button
+                                                                            className="button icon"
+                                                                            onClick={() => handleDelete(member.$id)}
+                                                                        >
+                                                                            <IconTrash size={20} stroke={2} />
+                                                                        </Button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        ))
+                                                    ) : (
+                                                        <tr>
+                                                            <td colSpan="6" className="text-center py-3">
+                                                                No team members found
                                                             </td>
                                                         </tr>
-                                                    ))
-                                                ) : (
-                                                    <tr>
-                                                        <td colSpan="6" className="text-center py-3">
-                                                            No team members found
-                                                        </td>
-                                                    </tr>
-                                                )}
-                                            </tbody>
-                                        </table>
+                                                    )}
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     )}
                                 </Card.Body>
                             </Card>

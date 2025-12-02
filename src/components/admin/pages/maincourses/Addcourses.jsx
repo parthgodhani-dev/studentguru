@@ -265,8 +265,8 @@ const Addcourses = () => {
                                                             <Card className="mb-3" key={`module-${moduleIndex}-lesson-${lessonIndex}`}>
                                                                 <Card.Body style={{ background: "#B2B2B2" }}>
                                                                     <Row>
-                                                                        <div className="accoflex" style={{ width: "100%" }}>
-                                                                            <h6 style={{ width: 30 }}>{lessonIndex + 1}</h6>
+                                                                        <div className="accoflex smflex" style={{ width: "100%" }}>
+                                                                            <h6>{lessonIndex + 1}</h6>
 
                                                                             <Form.Control
                                                                                 type="text"
@@ -275,7 +275,6 @@ const Addcourses = () => {
                                                                                 onChange={(e) =>
                                                                                     updateLesson(moduleIndex, lessonIndex, "lessonstitle", e.target.value)
                                                                                 }
-                                                                                className="me-2"
                                                                             />
 
                                                                             <Form.Control
@@ -285,7 +284,6 @@ const Addcourses = () => {
                                                                                 onChange={(e) =>
                                                                                     updateLesson(moduleIndex, lessonIndex, "lessonvideo", e.target.value)
                                                                                 }
-                                                                                className="me-2"
                                                                             />
 
                                                                             {module.lessons.length > 1 && (

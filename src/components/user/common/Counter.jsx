@@ -14,14 +14,14 @@ const Counter = () => {
         <div className="counter">
             <Container>
                 <Row className="align-items-center justify-content-between">
-                    <Col sm={3}>
+                    <Col lg={3} sm={6}>
                         <div className="box">
                             <div className="rbox">
                                 <IconVideo stroke={2} width={50} height={50} />
                             </div>
                             <div className="lbox">
                                 <div className="number" ref={ref1}>
-                                    <strong>{inView1 && <CountUp start={0} end={500} duration={3} />}</strong>
+                                    <strong>{inView1 && <CountUp start={0} end={200} duration={3} />}</strong>
                                     <span>+</span>
                                 </div>
                                 <p>Videos</p>
@@ -29,7 +29,7 @@ const Counter = () => {
                         </div>
                     </Col>
 
-                    <Col sm={3}>
+                    <Col lg={3} sm={6}>
                         <div className="box">
                             <div className="rbox">
                                 <IconSchool stroke={2} width={50} height={50} />
@@ -44,14 +44,14 @@ const Counter = () => {
                         </div>
                     </Col>
 
-                    <Col sm={3}>
+                    <Col lg={3} sm={6}>
                         <div className="box">
                             <div className="rbox">
                                 <IconMichelinStar stroke={2} width={50} height={50} />
                             </div>
                             <div className="lbox">
                                 <div className="number" ref={ref3}>
-                                    <strong>{inView3 && <CountUp start={0} end={18} duration={3} />}</strong>
+                                    <strong>{inView3 && <CountUp start={0} end={14} duration={3} />}</strong>
                                     <span>yrs</span>
                                 </div>
                                 <p>Experience</p>
@@ -59,7 +59,7 @@ const Counter = () => {
                         </div>
                     </Col>
 
-                    <Col sm={3}>
+                    <Col lg={3} sm={6}>
                         <div className="box">
                             <div className="rbox">
                                 <IconAward stroke={2} width={50} height={50} />

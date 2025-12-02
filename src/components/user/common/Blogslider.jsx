@@ -14,7 +14,32 @@ const Blogslider = () => {
         speed: 2000,
         autoplaySpeed: 3000,
         slidesToShow: 3,
-        slidesToScroll: 2
+        slidesToScroll: 2,
+        responsive: [
+            {
+                breakpoint: 1199,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    arrows: false
+                }
+            },
+            {
+                breakpoint: 479,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: false
+                }
+            }
+        ]
     };
 
     const [blogs, setBlogs] = useState([]);
@@ -47,10 +72,10 @@ const Blogslider = () => {
         <div className="blogslider">
             <Container>
                 <Row className="align-items-center justify-content-between">
-                    <Col sm={3} className='text-center'>
+                    <Col xl={3} md={4} className='text-center mb-md-0 mb-5'>
                         <Headtitle
                             className="text-center mb-3"
-                            topTitle="Get Started With a Free courses"
+                            topTitle="Get Started With a basic knowledge"
                             title="Boost Your Career With Advanced Skill."
                             headingTag="h2"
                             headingClass="maintitle"
@@ -58,9 +83,9 @@ const Blogslider = () => {
                             underlineClass="underline"
                             underlineText="Boost Your Career"
                         />
-                        <Link to="/" className='button'>View All courses</Link>
+                        <Link to="/blog" className='button'>get knowledge</Link>
                     </Col>
-                    <Col sm={9}>
+                    <Col xl={9} md={8}>
                         <div className="blogslider_box">
                             <div className="blog_slider">
                                 <Slider {...settings}>
@@ -85,7 +110,7 @@ const Blogslider = () => {
                                                             <small>{createdDate}</small>
                                                             <h3>{blog.title}</h3>
                                                             <p>{blog.shortcontent}</p>
-                                                            <Link to={`/blog/${blog.$id}`} className="button">View More</Link>
+                                                            <Link to={`/blog/${blog.$id}`} className="button">Read More</Link>
                                                         </div>
                                                     </div>
                                                 </div>

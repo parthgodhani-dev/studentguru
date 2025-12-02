@@ -4,10 +4,10 @@ import { Col, Container, Row } from 'react-bootstrap';
 const Coursebanner = ({ pageTitle, pageSubtext, className }) => {
     return (
         <>
-            <div className={`coursebanner ${className || ""}`}>
+            <div className={`coursebanner ${className || "smallbanner"}`}>
                 <Container>
                     <Row className="justify-content-between align-items-center">
-                        <Col sm={10}>
+                        <Col md={10}>
                             <div className="banner_text">
                                 {pageTitle}
                                 {pageSubtext}

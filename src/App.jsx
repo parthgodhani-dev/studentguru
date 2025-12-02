@@ -4,6 +4,7 @@ import {login , logout} from './store/authSlice'
 import authService from './appwrite/auth'
 import { useDispatch, useSelector } from "react-redux";
 import './App.css'
+import Scrolltotop from './Scrolltotop';
 import Loader from './components/Loader';
 import Protected from './components/Protected';
 
@@ -16,8 +17,10 @@ import Bloglisting from './components/user/pages/Bloglisting';
 import Blogsingle from './components/user/pages/Blogsingle';
 import Contact from './components/user/pages/Contact';
 import Profile from './components/user/pages/Profile';
+import Changepassword from './components/user/pages/Changepassword';
 import Login from './components/user/pages/Login';
 import Register from './components/user/pages/Register';
+import Forgotpassword from './components/user/pages/forgotpassword';
 import Header from './components/user/layout/Header';
 import Footer from './components/user/layout/Footer';
 import Notfound from './components/user/pages/Notfound';
@@ -41,6 +44,8 @@ import Editmember from './components/admin/pages/expertteam/Editmember';
 import Listingcourse from './components/admin/pages/maincourses/Listingcourses';
 import Addcourse from './components/admin/pages/maincourses/Addcourses';
 import Editcourse from './components/admin/pages/maincourses/Editcourses';
+
+
 
 
 function App() {
@@ -77,7 +82,7 @@ function App() {
     checkUser();
   }, [dispatch]);
 
-  if (loading) return <Loader message="Checking session..." />;
+  if (loading) return <Loader message="Loading..." />;
 
   const isAdmin = userData?.role;
   const isLoggedIn = !!userData;
@@ -85,6 +90,7 @@ function App() {
   return (
     <>
       <Router>
+        <Scrolltotop />
         <Routes>
             <Route
               path="/admin"
@@ -137,15 +143,16 @@ function App() {
                     <Route path='/worktest' element={<Worktest />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/services" element={<Services />} />
-                    <Route path="/courses" element={<Courses />} />
+                    <Route path="/courses" element={<Protected authentication={true}><Courses /></Protected>} />
                     <Route path="/courses/:slug" element={<Coursesingle />} />
-                    {/* <Route path="/courses/coursesingle" element={<Coursesingle />} /> */}
                     <Route path="/blog" element={<Bloglisting />} />
                     <Route path="/blog/:slug" element={<Blogsingle />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/changepassword" element={<Changepassword />} />
                     <Route path="/login" element={<Protected authentication={false}><Login /></Protected>}/>
-                    <Route path="/register" element={<Protected authentication={false}><Register /></Protected>}/>
+                    <Route path="/register" element={<Protected authentication={false}><Register /></Protected>} />
+                    <Route path="/forgotpassword" element={<Protected authentication={false}><Forgotpassword /></Protected>} />
                     <Route path="*" element={<Notfound />} />
                   </Routes>
                   <Footer />

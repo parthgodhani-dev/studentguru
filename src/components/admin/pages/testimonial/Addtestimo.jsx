@@ -140,7 +140,7 @@ const Addtestimo = () => {
                                             </Form.Group>
                                         </Col>
                                         <Col md={12}>
-                                            <Button className="button" type="submit">Create Post</Button>
+                                            <Button className="button" type="submit">Add Testimonial</Button>
                                         </Col>
                                     </Row>
                                 </Form>

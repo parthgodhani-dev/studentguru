@@ -15,7 +15,7 @@ const CourseCounter = () => {
                 <Row className="align-items-center justify-content-between">
 
                     {/* Total Courses */}
-                    <Col sm={4}>
+                    <Col xl={4} md={6}>
                         <div className="box">
                             <div className="rbox">
                                 <IconBook2 stroke={2} width={50} height={50} />
@@ -31,7 +31,7 @@ const CourseCounter = () => {
                     </Col>
 
                     {/* Active Learners */}
-                    <Col sm={4}>
+                    <Col xl={4} md={6}>
                         <div className="box">
                             <div className="rbox">
                                 <IconUsersGroup stroke={2} width={50} height={50} />
@@ -47,7 +47,7 @@ const CourseCounter = () => {
                     </Col>
 
                     {/* Avg Course Duration */}
-                    <Col sm={4}>
+                    <Col xl={4} md={12}>
                         <div className="box">
                             <div className="rbox">
                                 <IconClockHour4 stroke={2} width={50} height={50} />

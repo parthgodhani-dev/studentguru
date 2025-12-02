@@ -6,14 +6,14 @@ const PageBanner = ({ pageTitle, pageSubtext, pageBannerimg, className }) => {
         <>
             <div className={`herobanner ${className || ""}`}>
                 <Container>
-                    <Row className="justify-content-between align-items-center">
-                        <Col sm={6}>
+                    <Row className="justify-content-between align-items-center flex-md-row flex-column-reverse gap-md-0 gap-3">
+                        <Col xl={6} md={7}>
                             <div className="banner_text">
                                 {pageTitle}
                                 {pageSubtext}
                             </div>
                         </Col>
-                        <Col sm={6}>
+                        <Col xl={6} md={5}>
                             <div className="big_img">
                                 {pageBannerimg}
                             </div>

@@ -32,7 +32,7 @@ const HowItWorks = () => {
         <section className="howworks">
             <Container>
                 <Row className="justify-content-center">
-                    <Col md={8}>
+                    <Col lg={8}>
                         <Headtitle
                             className="text-center mb-5"
                             topTitle="Our Process"
@@ -49,8 +49,8 @@ const HowItWorks = () => {
                 <div className="timeline">
                     <Row className="justify-content-center">
                         {steps.map((step, index) => (
-                            <Col key={index} md={3}>
-                                <Card className="h-100">
+                            <Col key={index} lg={3} sm={6} className="d-flex align-items-stretch">
+                                <Card>
                                     <Card.Body>
                                         <span>{index + 1}</span>
                                         <div className="icon">{step.icon}</div>

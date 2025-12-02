@@ -31,7 +31,7 @@ const Blogcard = ({ blogs }) => {
                     : "";
 
                 return (
-                    <div className="blog_box" key={blog.$id}>
+                    <Col lg={4} sm={6} className="blog_box" key={blog.$id}>
                         <div className="wrap">
                             <div className="box_img">
                                 <img
@@ -48,7 +48,7 @@ const Blogcard = ({ blogs }) => {
                                 </Link>
                             </div>
                         </div>
-                    </div>
+                    </Col>
                 );
             })}
         </>

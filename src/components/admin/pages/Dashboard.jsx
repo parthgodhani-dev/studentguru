@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row, Card } from "react-bootstrap";
+import { Col, Container, Row, Card, Spinner } from "react-bootstrap";
 
 import blogServices from "../../../appwrite/awblog";
 import testimoServices from "../../../appwrite/awtestimo";
@@ -9,6 +9,7 @@ import subCourseServices from "../../../appwrite/awsubcourses";
 import lessonsServices from "../../../appwrite/awlessons";
 
 const Dashboard = () => {
+  const [loading, setLoading] = useState(true)
   const [data, setData] = useState({
     blogs: [],
     reviews: [],
@@ -46,6 +47,8 @@ const Dashboard = () => {
       });
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -55,7 +58,7 @@ const Dashboard = () => {
 
 
   const StatCard = ({ title, value }) => (
-    <Col md={4}>
+    <Col md={4} sm={6}>
       <Card className='admincard mb-4'>
         <Card.Header as="h5">{title}</Card.Header>
         <Card.Body>
@@ -83,12 +86,23 @@ const Dashboard = () => {
         </Row>
 
         <Row>
-          <StatCard title="Added Courses" value={data.mainCourses.length} />
-          <StatCard title="Added Sub Courses" value={data.subCourses.total} />
-          <StatCard title="Added Lessons" value={data.lessons?.total || 0} />
-          <StatCard title="Added Blogs" value={data.blogs.length} />
-          <StatCard title="Added Reviews" value={data.reviews.length} />
-          <StatCard title="Added Members" value={data.team.length} />
+          {loading ? (
+            <Col sm={12}>
+              <div className="text-center py-4">
+                <Spinner animation="border" />
+              </div>
+            </Col>
+          ) : (
+            <>
+              <StatCard title="Added Courses" value={data.mainCourses.length} />
+              <StatCard title="Added Sub Courses" value={data.subCourses.total} />
+              <StatCard title="Added Lessons" value={data.lessons?.total || 0} />
+              <StatCard title="Added Blogs" value={data.blogs.length} />
+              <StatCard title="Added Reviews" value={data.reviews.length} />
+              <StatCard title="Added Members" value={data.team.length} />
+            </>
+          )}
+
         </Row>
       </Container>
     </section>

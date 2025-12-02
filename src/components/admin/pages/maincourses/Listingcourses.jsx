@@ -90,81 +90,83 @@ const Listingcourse = () => {
                                             <Spinner animation="border" />
                                         </div>
                                     ) : (
-                                        <table className="GeneratedTable">
-                                            <thead>
-                                                <tr>
-                                                    <th width="10%">Image</th>
-                                                    <th width="25%">Course Title</th>
-                                                    <th width="35%">Description</th>
-                                                    <th width="15%">Status</th>
-                                                    <th width="15%" className="text-end">Action</th>
-                                                </tr>
-                                            </thead>
+                                        <div class="table-responsive">
+                                            <table className="list-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th style={{width:"10%"}}>Image</th>
+                                                        <th style={{width:"25%"}}>Course Title</th>
+                                                        <th style={{width:"35%"}}>Description</th>
+                                                        <th style={{width:"15%"}}>Status</th>
+                                                        <th style={{width:"15%"}} className="text-end">Action</th>
+                                                    </tr>
+                                                </thead>
 
-                                            <tbody>
-                                                {courses.length > 0 ? (
-                                                    courses.map((course) => (
-                                                        <tr key={course.$id}>
-                                                            <td>
-                                                                {course.courseimg ? (
-                                                                    <img
-                                                                        className="img-thumbnail"
-                                                                        src={maincoursesServices.getFilePreview(course.courseimg)}
-                                                                        alt={course.coursetitle}
-                                                                        width={100}
-                                                                    />
-                                                                ) : (
-                                                                    <span className="text-muted">No Image</span>
-                                                                )}
-                                                            </td>
+                                                <tbody>
+                                                    {courses.length > 0 ? (
+                                                        courses.map((course) => (
+                                                            <tr key={course.$id}>
+                                                                <td>
+                                                                    {course.courseimg ? (
+                                                                        <img
+                                                                            className="img-thumbnail"
+                                                                            src={maincoursesServices.getFilePreview(course.courseimg)}
+                                                                            alt={course.coursetitle}
+                                                                            width={100}
+                                                                        />
+                                                                    ) : (
+                                                                        <span className="text-muted">No Image</span>
+                                                                    )}
+                                                                </td>
 
-                                                            <td className="fw-medium">{course.coursetitle}</td>
+                                                                <td className="fw-medium">{course.coursetitle}</td>
 
-                                                            <td className="fw-medium" style={{ maxWidth: "300px" }}>
-                                                                {course.description}
-                                                            </td>
+                                                                <td className="fw-medium" style={{ maxWidth: "300px" }}>
+                                                                    {course.description}
+                                                                </td>
 
-                                                            <td className="fw-medium">
-                                                                <Form.Select
-                                                                    value={course.status}
-                                                                    onChange={(e) =>
-                                                                        handleStatusChange(course.$id, e.target.value)
-                                                                    }
-                                                                >
-                                                                    <option value="active">Active</option>
-                                                                    <option value="inactive">Inactive</option>
-                                                                </Form.Select>
-                                                            </td>
-
-                                                            <td>
-                                                                <div className="d-flex align-items-center justify-content-end gap-2">
-                                                                    <Button
-                                                                        className="button icon"
-                                                                        as={Link}
-                                                                        to={`/admin/editcourse/${course.$id}`}
+                                                                <td className="fw-medium">
+                                                                    <Form.Select
+                                                                        value={course.status}
+                                                                        onChange={(e) =>
+                                                                            handleStatusChange(course.$id, e.target.value)
+                                                                        }
                                                                     >
-                                                                        <IconEdit size={20} stroke={2} />
-                                                                    </Button>
+                                                                        <option value="active">Active</option>
+                                                                        <option value="inactive">Inactive</option>
+                                                                    </Form.Select>
+                                                                </td>
 
-                                                                    <Button
-                                                                        className="button icon"
-                                                                        onClick={() => handleDelete(course.$id)}
-                                                                    >
-                                                                        <IconTrash size={20} stroke={2} />
-                                                                    </Button>
-                                                                </div>
+                                                                <td>
+                                                                    <div className="d-flex align-items-center justify-content-end gap-2">
+                                                                        <Button
+                                                                            className="button icon"
+                                                                            as={Link}
+                                                                            to={`/admin/editcourse/${course.$id}`}
+                                                                        >
+                                                                            <IconEdit size={20} stroke={2} />
+                                                                        </Button>
+
+                                                                        <Button
+                                                                            className="button icon"
+                                                                            onClick={() => handleDelete(course.$id)}
+                                                                        >
+                                                                            <IconTrash size={20} stroke={2} />
+                                                                        </Button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        ))
+                                                    ) : (
+                                                        <tr>
+                                                            <td colSpan="6" className="text-center py-3">
+                                                                No courses found
                                                             </td>
                                                         </tr>
-                                                    ))
-                                                ) : (
-                                                    <tr>
-                                                        <td colSpan="6" className="text-center py-3">
-                                                            No courses found
-                                                        </td>
-                                                    </tr>
-                                                )}
-                                            </tbody>
-                                        </table>
+                                                    )}
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     )}
                                 </Card.Body>
                             </Card>

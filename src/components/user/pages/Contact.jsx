@@ -26,7 +26,7 @@ const Contact = () => {
                     </Col>
                 </Row>
                 <Row className='align-items-center justify-content-between'>
-                    <Col sm={7}>
+                    <Col md={7}>
                         <div className="authform">
                             <Form>
                                 <FormGroup className="mb-3 field" controlId="formBasicName">
@@ -58,7 +58,7 @@ const Contact = () => {
                             </Form>
                         </div>
                     </Col>
-                    <Col sm={4}>
+                    <Col md={4}>
                         <div className="cont_img">
                             <img src="/contact_us.svg" alt="" />
                         </div>
@@ -78,9 +78,9 @@ const Contact = () => {
                             <div className="contact_box social">
                                 <h6>Social</h6>
                                 <ul className="social">
-                                    <li><Link to="/"><IconBrandFacebook stroke={1} width={24} height={24} /></Link></li>
-                                    <li><Link to="/"><IconBrandInstagram stroke={1} width={24} height={24} /></Link></li>
-                                    <li><Link to="/"><IconBrandYoutube stroke={1} width={24} height={24} /></Link></li>
+                                    <li><Link to="https://www.facebook.com/"><IconBrandFacebook stroke={1} width={24} height={24} /></Link></li>
+                                    <li><Link to="https://www.instagram.com/"><IconBrandInstagram stroke={1} width={24} height={24} /></Link></li>
+                                    <li><Link to="https://www.youtube.com/"><IconBrandYoutube stroke={1} width={24} height={24} /></Link></li>
                                 </ul>
                             </div>
                         </div>

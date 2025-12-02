@@ -32,7 +32,7 @@ const Servicedetails = () => {
       <div className="servicecontent">
         <Container>
           <Row className="justify-content-center">
-            <Col sm={8}>
+            <Col lg={8}>
               <Headtitle
                 className="text-center"
                 topTitle="What We Offer"
@@ -46,10 +46,10 @@ const Servicedetails = () => {
             </Col>
           </Row>
 
-          <Row className='justify-content-center'>
+          <Row className='justify-content-center gap-x'>
             {
               servicesinfo.map((service, index) => (
-                <Col md={3} key={index}>
+                <Col lg={3} sm={6} key={index} className='d-flex align-items-stretch'>
                   <Card>
                     <div className="imgbox">
                       <Card.Img src={service.img} />

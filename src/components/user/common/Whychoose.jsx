@@ -58,23 +58,23 @@ const Whychoose = () => {
                 </Row>
                 <Row>
                     {
-                          reasons.map((whychoose, index) => (
-                              <Col sm={4} key={index}>
-                                  <div className="infobox">
-                                      <img src={whychoose.img} alt={whychoose.title} />
-                                      <h4>{whychoose.title}</h4>
-                                      <p>{whychoose.content}</p>
-                                  </div>
-                              </Col>
-                          ))
+                        reasons.map((whychoose, index) => (
+                            <Col lg={4} sm={6} key={index}>
+                                <div className="infobox">
+                                    <img src={whychoose.img} alt={whychoose.title} />
+                                    <h4>{whychoose.title}</h4>
+                                    <p>{whychoose.content}</p>
+                                </div>
+                            </Col>
+                        ))
                     }
                     
                 </Row>
                 <Row className="justify-content-center">
-                    <Col sm={4}>
-                        <div className="buttons d-flex align-items-center justify-content-between">
-                            <Link to="/" className='button'>Get Start Now</Link>
-                            <Link to="/" className='button'>Learn More</Link>
+                    <Col xl={4} md={6}>
+                        <div className="buttons d-flex align-items-center flex-sm-row flex-column justify-content-center gap-3">
+                            <Link to="/courses" className='button'>Get Start Now</Link>
+                            <Link to="/about" className='button'>Learn More</Link>
                         </div>
                     </Col>
                 </Row>

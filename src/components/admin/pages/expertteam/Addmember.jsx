@@ -157,7 +157,7 @@ const Addmember = () => {
                                             </Form.Group>
                                         </Col>
                                         <Col md={12}>
-                                            <Button className="button" type="submit">Create Post</Button>
+                                            <Button className="button" type="submit">Add Member</Button>
                                         </Col>
                                     </Row>
                                 </Form>

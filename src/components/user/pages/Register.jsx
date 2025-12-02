@@ -52,11 +52,11 @@ const Register = () => {
                             />
                         </Col>
                     </Row>
-                    <Row className="justify-content-center align-items-center">
-                        <Col sm={6}>
+                    <Row className="justify-content-center align-items-center flex-md-row flex-column-reverse gap-md-0 gap-3">
+                        <Col xl={6} lg={5} md={5}>
                             <img src="/register.svg" alt="" />
                         </Col>
-                        <Col md={6}>
+                        <Col xl={6} lg={7} md={7}>
                             {error && <p className="text-danger text-center">{error}</p>}
                                 <div className="authform">
                                     <Form onSubmit={handleSubmit(create)}>

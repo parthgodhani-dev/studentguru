@@ -92,76 +92,78 @@ const Listingtestimo = () => {
                                             <Spinner animation="border" />
                                         </div>
                                     ) : (
-                                        <table className="GeneratedTable">
-                                            <thead>
-                                                <tr>
-                                                    <th width="10%">Image</th>
-                                                    <th width="20%">Name</th>
-                                                    <th width="40%">Content</th>
-                                                    <th width="15%">Status</th>
-                                                    <th width="15%" className="text-end">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {reviews.length > 0 ? (
-                                                    reviews.map((review) => (
-                                                        <tr key={review.$id}>
-                                                            <td>
-                                                                {review.userimg ? (
-                                                                    <img
-                                                                        className="img-thumbnail"
-                                                                        src={testimoServices.getFilePreview(review.userimg)}
-                                                                        alt={review.name}
-                                                                        width={100}
-                                                                    />
-                                                                ) : (
-                                                                    <span className="text-muted">No Image</span>
-                                                                )}
-                                                            </td>
-                                                            <td className="fw-medium">{review.name}</td>
-                                                            <td
-                                                                className="fw-medium"
-                                                                dangerouslySetInnerHTML={{ __html: review.content }}
-                                                            ></td>
-                                                            <td className="fw-medium">
-                                                                <Form.Select
-                                                                    value={review.status}
-                                                                    onChange={(e) =>
-                                                                        handleStatusChange(review.$id, e.target.value)
-                                                                    }
-                                                                >
-                                                                    <option value="active">Active</option>
-                                                                    <option value="inactive">Inactive</option>
-                                                                </Form.Select>
-                                                            </td>
-                                                            <td>
-                                                                <div className="d-flex align-items-center justify-content-end gap-2">
-                                                                    <Button
-                                                                        className="button icon"
-                                                                        as={Link}
-                                                                        to={`/admin/edittestimonial/${review.$id}`}
+                                        <div class="table-responsive">
+                                            <table className="list-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th width="10%">Image</th>
+                                                        <th width="20%">Name</th>
+                                                        <th width="40%">Content</th>
+                                                        <th width="15%">Status</th>
+                                                        <th width="15%" className="text-end">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {reviews.length > 0 ? (
+                                                        reviews.map((review) => (
+                                                            <tr key={review.$id}>
+                                                                <td>
+                                                                    {review.userimg ? (
+                                                                        <img
+                                                                            className="img-thumbnail"
+                                                                            src={testimoServices.getFilePreview(review.userimg)}
+                                                                            alt={review.name}
+                                                                            width={100}
+                                                                        />
+                                                                    ) : (
+                                                                        <span className="text-muted">No Image</span>
+                                                                    )}
+                                                                </td>
+                                                                <td className="fw-medium">{review.name}</td>
+                                                                <td
+                                                                    className="fw-medium"
+                                                                    dangerouslySetInnerHTML={{ __html: review.content }}
+                                                                ></td>
+                                                                <td className="fw-medium">
+                                                                    <Form.Select
+                                                                        value={review.status}
+                                                                        onChange={(e) =>
+                                                                            handleStatusChange(review.$id, e.target.value)
+                                                                        }
                                                                     >
-                                                                        <IconEdit size={20} stroke={2} />
-                                                                    </Button>
-                                                                    <Button
-                                                                        className="button icon"
-                                                                        onClick={() => handleDelete(review.$id)}
-                                                                    >
-                                                                        <IconTrash size={20} stroke={2} />
-                                                                    </Button>
-                                                                </div>
+                                                                        <option value="active">Active</option>
+                                                                        <option value="inactive">Inactive</option>
+                                                                    </Form.Select>
+                                                                </td>
+                                                                <td>
+                                                                    <div className="d-flex align-items-center justify-content-end gap-2">
+                                                                        <Button
+                                                                            className="button icon"
+                                                                            as={Link}
+                                                                            to={`/admin/edittestimonial/${review.$id}`}
+                                                                        >
+                                                                            <IconEdit size={20} stroke={2} />
+                                                                        </Button>
+                                                                        <Button
+                                                                            className="button icon"
+                                                                            onClick={() => handleDelete(review.$id)}
+                                                                        >
+                                                                            <IconTrash size={20} stroke={2} />
+                                                                        </Button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        ))
+                                                    ) : (
+                                                        <tr>
+                                                            <td colSpan="5" className="text-center py-3">
+                                                                No testimonials found
                                                             </td>
                                                         </tr>
-                                                    ))
-                                                ) : (
-                                                    <tr>
-                                                        <td colSpan="5" className="text-center py-3">
-                                                            No testimonials found
-                                                        </td>
-                                                    </tr>
-                                                )}
-                                            </tbody>
-                                        </table>
+                                                    )}
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     )}
                                 </Card.Body>
                             </Card>

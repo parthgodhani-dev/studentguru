@@ -10,18 +10,18 @@ const Professor = () => {
           <section className="professer">
               <Container>
                   <Row className="align-items-center justify-content-between">
-                      <Col sm={6}>
-                          <div className="img_box">
+                      <Col lg={6} md={5}>
+                          <div className="img_box d-lg-block d-none">
                               <div className="box">
                                   <img src="/unifr.png" alt="" />
                               </div>
                               <img src="/mr_johndoe.png" alt="mr_johndoe" />
-                              <Link to="/" className="link_box">
-                                  <p>Register For Webinar Now <IconCircleArrowRightFilled stroke={1} width={20} height={20} /></p>
+                              <Link to="/register" className="link_box">
+                                  <p className='mb-0'>Register For Webinar Now <IconCircleArrowRightFilled stroke={1} width={20} height={20} /></p>
                               </Link>
                           </div>
                       </Col>
-                      <Col sm={6}>
+                      <Col lg={6} md={12}>
                           <div className="info">
                               <Headtitle
                                   className="text-start mb-3"
@@ -33,6 +33,15 @@ const Professor = () => {
                                   underlineClass="underline h4"
                                   underlineText="Mr. Rajesh Sharma"
                               />
+                              <div className="img_box d-lg-none mb-3">
+                                  <div className="box">
+                                      <img src="/unifr.png" alt="" />
+                                  </div>
+                                  <img src="/mr_johndoe.png" alt="mr_johndoe" />
+                                  <Link to="/register" className="link_box">
+                                      <p className='mb-0'>Register For Webinar Now <IconCircleArrowRightFilled stroke={1} width={20} height={20} /></p>
+                                  </Link>
+                              </div>
                               <p>With over 15 years of teaching and industry experience, Mr. Rajesh Sharma has mentored thousands of students across the globe. His passion for technology and education drives him to make complex topics simple and engaging for every learner. He specializes in guiding students through practical coding challenges, modern web development, and career-focused learning strategies. At StudentGuru, his mission is to help every student unlock their potential and build confidence in real-world problem solving.</p>
                               <ul>
                                   <li>Builds strong foundations in programming and logic</li>

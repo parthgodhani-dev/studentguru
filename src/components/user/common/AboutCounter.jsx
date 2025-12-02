@@ -15,15 +15,15 @@ const Counter = () => {
     return (
         <div className="counter abt_count">
             <Container>
-                <Row className="align-items-center justify-content-between">
-                    <Col sm={4}>
+                <Row className="align-items-center justify-content-start">
+                    <Col xl={4} md={6}>
                         <div className="box">
                             <div className="rbox">
                                 <IconBriefcase2 stroke={2} width={50} height={50} />
                             </div>
                             <div className="lbox">
                                 <div className="number" ref={ref1}>
-                                    <strong>{inView1 && <CountUp start={0} end={50} duration={0.5} />}</strong>
+                                    <strong>{inView1 && <CountUp start={0} end={12} duration={0.5} />}</strong>
                                     <span>K+</span>
                                 </div>
                                 <p>Student successfully working in tech</p>
@@ -31,7 +31,7 @@ const Counter = () => {
                         </div>
                     </Col>
 
-                    <Col sm={4}>
+                    <Col xl={4} md={6}>
                         <div className="box">
                             <div className="rbox">
                                 <IconCalendarSearch stroke={2} width={50} height={50} />
@@ -46,7 +46,7 @@ const Counter = () => {
                         </div>
                     </Col>
 
-                    <Col sm={4}>
+                    <Col xl={4} md={12}>
                         <div className="box">
                             <div className="rbox">
                                 <IconFlag stroke={2} width={50} height={50} />

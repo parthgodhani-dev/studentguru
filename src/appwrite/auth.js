@@ -82,7 +82,6 @@ export class Authservice {
         dob: profile.dob || null,
         role: profile.role || "user",
       };
-      
     } catch (error) {
       console.error("Appwrite Auth :: getCurrentUser :: error", error);
       return null;
@@ -96,6 +95,15 @@ export class Authservice {
     } catch (error) {
       console.log("Appwrite Auth :: logout :: error", error);
       throw error; // ✅ pass error back
+    }
+  }
+
+  async changePassword(oldPassword, newPassword) {
+    try {
+      return await this.account.updatePassword(newPassword, oldPassword);
+    } catch (error) {
+      console.log("Appwrite Auth :: changePassword :: error", error);
+      throw error;
     }
   }
 }

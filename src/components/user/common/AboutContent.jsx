@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from "react-router-dom"
 import { Col, Container, Row } from 'react-bootstrap'
 import Headtitle from './Headtitle'
 
@@ -22,12 +23,12 @@ const AboutContent = () => {
                     </Col>
                 </Row>
                 <Row className='align-items-center justify-content-between rowpy'>
-                    <Col sm={6}>
+                    <Col lg={6} md={5}>
                         <div className="aboutimg">
                             <img src="/about_c.svg" alt="" />
                         </div>
                     </Col>
-                    <Col sm={5}>
+                    <Col lg={5} md={6}>
                         <div className="aboutcont">
                             <div className="icon_box"></div>
                             <h3>Bulding talier-mode projects and a portfolio to find a job</h3>
@@ -35,27 +36,27 @@ const AboutContent = () => {
                         </div>
                     </Col>
                 </Row>
-                <Row className='align-items-center justify-content-between rowpy'>
-                    <Col sm={5}>
+                  <Row className='align-items-center justify-content-between flex-md-row flex-column-reverse rowpy'>
+                    <Col lg={5} md={6}>
                         <div className="aboutcont">
                             <div className="icon_box"></div>
                             <h3>Realizing your first missions as a freelance developer</h3>
                               <p>StudentGuru helps you go beyond theory. From understanding client requirements to completing live freelance missions — we prepare you for the real challenges of the tech world with confidence.</p>
                         </div>
                     </Col>
-                    <Col sm={5}>
+                    <Col lg={6} md={5}>
                         <div className="aboutimg">
                             <img src="/about_a.svg" alt="" />
                         </div>
                     </Col>
                 </Row>
                 <Row className='align-items-center justify-content-between rowpy'>
-                    <Col sm={6}>
+                    <Col lg={6} md={5}>
                         <div className="aboutimg">
                             <img src="/about_b.svg" alt="" />
                         </div>
                     </Col>
-                    <Col sm={5}>
+                    <Col lg={5} md={6}>
                         <div className="aboutcont">
                             <div className="icon_box"></div>
                             <h3>Starting at first job as a juniior devloper.</h3>
@@ -66,7 +67,7 @@ const AboutContent = () => {
                 <Row>
                     <Col sm={12}>
                         <div className="d-flex align-items-center justify-content-center">
-                            <a className="button" href="/">Get Start Now</a>
+                            <Link className="button" to="/courses">Get Start Now</Link>
                         </div>
                     </Col>
                 </Row>

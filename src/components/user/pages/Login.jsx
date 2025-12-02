@@ -57,11 +57,11 @@ const Login = () => {
                     </Col>
                 </Row>
 
-                <Row className='align-items-center justify-content-center'>
-                    <Col sm={7}>
+                <Row className='align-items-center justify-content-center flex-md-row flex-column-reverse gap-md-0 gap-3'>
+                    <Col xl={7} lg={6} md={5}>
                         <img src="/login.svg" alt="" />
                     </Col>
-                    <Col sm={5}>
+                    <Col xl={5} lg={6} md={7}>
                         <div className="authform">
                             {error && <p className='text-danger text-center'>{error}</p>}
                             <Form onSubmit={handleSubmit(login)}>
@@ -76,7 +76,10 @@ const Login = () => {
                                 </Form.Group>
 
                                 <Form.Group className="mb-3 field" controlId="formBasicPassword">
-                                    <Form.Label>Password</Form.Label>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <Form.Label>Password</Form.Label>
+                                        <Link to="/forgotpassword">Lost password ?</Link>
+                                    </div>
                                     <IconKeyFilled stroke={1} width={20} height={20} />
                                     <Form.Control
                                         type="password"
@@ -89,6 +92,11 @@ const Login = () => {
                                 <Button variant="secondary" type="submit">
                                     Sign In
                                 </Button>
+
+                                <div class="mt-3">
+                                    <p class="mb-0">Not Registered ? <Link to="/register" data-discover="true">Create account</Link></p>
+                                </div>
+
                             </Form>
                         </div>
                     </Col>

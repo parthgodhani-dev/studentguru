@@ -45,8 +45,8 @@ const Blogsingle = () => {
     return (
         <section className="blogs-single">
             <Container>
-                <Row className="justify-content-center">
-                    <Col md={3}>
+                <Row className="justify-content-center flex-lg-row flex-column-reverse gap-lg-0 gap-4">
+                    <Col xl={3} lg={4}>
                     <div className="sidebar">
                         <div className="box">
                             <h6>Set order</h6>
@@ -58,11 +58,11 @@ const Blogsingle = () => {
                         </div>
                     </div>
                     </Col>
-                    <Col md={9}>
+                    <Col xl={9} lg={8}>
                         <Headtitle
                             className="text-center"
                             headingTag="h1"
-                            headingClass="maintitle h3"
+                            headingClass="maintitle blogstitle h3"
                             title={blog.title}
                         />
                         <div className="blog-content" dangerouslySetInnerHTML={{ __html: blog.content }}></div>

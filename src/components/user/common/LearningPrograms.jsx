@@ -64,7 +64,7 @@ const LearningPrograms = () => {
         <section className="programs">
             <Container>
                 <Row className="justify-content-center">
-                    <Col md={8}>
+                    <Col lg={8}>
                         <Headtitle
                             className="text-center"
                             topTitle="Our Learning Programs"
@@ -80,7 +80,7 @@ const LearningPrograms = () => {
 
                 <Row>
                     {programs.map((program, index) => (
-                        <Col key={index} md={4} className=" d-flex align-items-stretch">
+                        <Col key={index} md={4} sm={6} className=" d-flex align-items-stretch">
                             <Card className="mb-4">
                                 <Card.Body className="text-center p-4">
                                     <img src={program.img} alt={program.title} />
