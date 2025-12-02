@@ -31,7 +31,7 @@ const Sidebar = ({ onToggleSidebar }) => {
             <IconX size={30} stroke={2} />
           </a>
           <Link className="brand-logo" to="/admin">
-            <img src="/public/studentguru_logo_footer.png" alt="studentguru_logo" width={170} />
+            <img src="/studentguru_logo_footer.png" alt="studentguru_logo" width={170} />
           </Link>
         </header>
         <nav className="dashboard-nav-list">

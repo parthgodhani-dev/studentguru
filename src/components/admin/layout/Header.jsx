@@ -16,7 +16,7 @@ const Header = ({ onToggleSidebar }) => {
               <IconMenu3 stroke={2} width={30} height={30} />
             </a>
             <a className="brand-logo-mob d-lg-none d-flex" href="/admin">
-              <img src="/public/studentguru_logo.png" alt="studentguru_logo" />
+              <img src="/studentguru_logo.png" alt="studentguru_logo" />
             </a>
             <strong className="user_info">
               <IconUserStar size={20} />
