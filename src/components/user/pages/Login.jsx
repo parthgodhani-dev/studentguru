@@ -76,7 +76,7 @@ const Login = () => {
                                 </Form.Group>
 
                                 <Form.Group className="mb-3 field" controlId="formBasicPassword">
-                                    <div class="d-flex align-items-center justify-content-between">
+                                    <div className="d-flex align-items-center justify-content-between">
                                         <Form.Label>Password</Form.Label>
                                         <Link to="/forgotpassword">Lost password ?</Link>
                                     </div>
@@ -93,8 +93,8 @@ const Login = () => {
                                     Sign In
                                 </Button>
 
-                                <div class="mt-3">
-                                    <p class="mb-0">Not Registered ? <Link to="/register" data-discover="true">Create account</Link></p>
+                                <div className="mt-3">
+                                    <p className="mb-0">Not Registered ? <Link to="/register" data-discover="true">Create account</Link></p>
                                 </div>
 
                             </Form>

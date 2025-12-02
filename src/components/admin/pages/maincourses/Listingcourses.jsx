@@ -90,7 +90,7 @@ const Listingcourse = () => {
                                             <Spinner animation="border" />
                                         </div>
                                     ) : (
-                                        <div class="table-responsive">
+                                        <div className="table-responsive">
                                             <table className="list-table">
                                                 <thead>
                                                     <tr>
