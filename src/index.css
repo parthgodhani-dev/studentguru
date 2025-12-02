@@ -53,6 +53,9 @@ h6, h6>span .h6{display: block;font-size: 24px;font-weight: 600; line-height: 1;
 .form-control{display: block;width: 100% !important;height: 50px !important;margin: 0;padding: 10px 10px 10px 40px !important;font-size: 16px !important;font-weight: 400 !important;line-height: normal !important;border: 2px solid transparent !important;border-radius: 10px !important;background-color: var(--white) !important;color: var(--secondary) !important;-moz-appearance: none;-webkit-appearance: none;appearance: none;outline: none;box-shadow: inherit;}
 
 /* slick slider settings */
+.slick-slider {
+  width: 100% !important;
+}
 .slick-prev:before{content: inherit;}
 .slick-next{width: 60px;height: 60px;background-color: var(--primary);border-radius: 50%;right: -90px;top: 50%;}
 .slick-next::before {content: "";display: block;width: 30px;height: 30px;background-color: #000;-webkit-mask-image: url('../public/sliderarrow.svg');-webkit-mask-repeat: no-repeat;-webkit-mask-position: center;-webkit-mask-size: contain;mask-image: url('../public/sliderarrow.svg');mask-repeat: no-repeat;mask-position: center;mask-size: contain;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
