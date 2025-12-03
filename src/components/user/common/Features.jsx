@@ -47,9 +47,9 @@ const Features = () => {
                 <Container>
                     <Row className="justify-content-center">
                         <Col md={12}>
-                            <div className="slider">
+                            <div className="swiperslider">
 
-                                <button ref={prevRef} className="custom-prev"></button>
+                                <button ref={prevRef} className="swiper-prev d-md-none d-block"></button>
 
                                 <Swiper
                                     modules={[Navigation, Autoplay]}
@@ -89,7 +89,7 @@ const Features = () => {
                                     ))}
                                 </Swiper>
 
-                                <button ref={nextRef} className="custom-next"></button>
+                                <button ref={nextRef} className="swiper-next"></button>
                             </div>
                         </Col>
                     </Row>

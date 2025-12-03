@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Col, Container, Row, Card, Spinner } from 'react-bootstrap';
-import Slider from "react-slick";
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Navigation, Autoplay } from "swiper/modules"
 import Headtitle from './Headtitle'
 import teamServices from '../../../appwrite/awteam';
 
 const Aboutteam = () => {
+
+    const prevRef = useRef(null);
+    const nextRef = useRef(null);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -12,42 +16,6 @@ const Aboutteam = () => {
         }, 50);
         return () => clearTimeout(timer);
     }, []);
-
-    const settings = {
-        dots: false,
-        arrow : true,
-        infinite: true,
-        autoplay: true,
-        speed: 2000,
-        autoplaySpeed: 3000,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 767,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    arrows: false
-                }
-            },
-            {
-                breakpoint: 479,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    arrows: false
-                }
-            }
-        ]
-    };
 
     const [memberdata, setMemberdata] = useState([])
     const [loading, setLoading] = useState(true)
@@ -93,34 +61,65 @@ const Aboutteam = () => {
                 </Row>
                 <div className="teamslider">
                     <Row className='justify-content-center'>
-                        <Col md={10}>
-                            {loading ? (
+                        {loading ? (
+                            <Col md={10}>
                                 <div className="text-center py-4">
                                     <Spinner animation="border" />
                                 </div>
-                            ) : (
-                                <Slider {...settings}>
+                            </Col>
+                        ) : (
+                            <Col md={10}>
+                                <div className="swiperslider">
+                                    <button ref={prevRef} className="swiper-prev"></button>
+                                    <Swiper
+                                        modules={[Navigation, Autoplay]}
+                                        slidesPerView={3}
+                                        speed={1000}
+                                        autoplay={{
+                                            delay: 500,
+                                            disableOnInteraction: false,
+                                            pauseOnMouseEnter: true, // stop autoplay on hover
+                                        }}
+                                        loop={true}
+                                        onInit={(swiper) => {
+                                            swiper.params.navigation.prevEl = prevRef.current;
+                                            swiper.params.navigation.nextEl = nextRef.current;
+                                            swiper.navigation.init();
+                                            swiper.navigation.update();
+                                        }}
+                                        breakpoints={{
+                                            1200: { slidesPerView: 3 },
+                                            1024: { slidesPerView: 2 },
+                                            768: { slidesPerView: 2 },
+                                            480: { slidesPerView: 1 },
+                                            0: { slidesPerView: 1 },
+                                        }}
+                                    >
                                         {memberdata.map((m, index) => (
-                                            <Col md={3} key={index} className='mb-4'>
-                                                <Card>
-                                                    <Card.Img variant="top" 
+                                            <SwiperSlide key={index}>
+                                                <Card className="h-100">
+                                                    <Card.Img
+                                                        variant="top"
                                                         src={teamServices.getFilePreview(m.expertimg)}
-                                                        alt={m.name} />
+                                                        alt={m.name}
+                                                    />
                                                     <Card.Body>
                                                         <h4>{m.name}</h4>
                                                         <strong>{m.designation}</strong>
                                                         <ul>
-                                                            <li><strong>Experience :</strong><span>{m.experience}</span></li>
-                                                            <li><strong>Expertise :</strong><span>{m.expertise}</span></li>
-                                                            <li><strong>Bio :</strong><span>{m.bio}</span></li>
+                                                            <li><strong>Experience :</strong> <span>{m.experience}</span></li>
+                                                            <li><strong>Expertise :</strong> <span>{m.expertise}</span></li>
+                                                            <li><strong>Bio :</strong> <span>{m.bio}</span></li>
                                                         </ul>
                                                     </Card.Body>
                                                 </Card>
-                                            </Col>
+                                            </SwiperSlide>
                                         ))}
-                                </Slider>
-                            )}
-                        </Col>
+                                    </Swiper>
+                                    <button ref={nextRef} className="swiper-next"></button>
+                                </div>
+                            </Col>
+                        )}
                     </Row>
                 </div>
             </Container>

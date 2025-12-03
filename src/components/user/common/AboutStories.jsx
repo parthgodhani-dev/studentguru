@@ -1,34 +1,64 @@
-import React, { useEffect } from 'react'
-import { Col, Container, Row, Spinner } from 'react-bootstrap'
-import Slider from "react-slick";
-import Headtitle from './Headtitle';
+import React, { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+import { Col, Container, Row } from "react-bootstrap";
+import Headtitle from "./Headtitle";
+
 
 const AboutStories = () => {
+    const prevRef = useRef(null);
+    const nextRef = useRef(null);
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            window.dispatchEvent(new Event("resize"));
-        }, 50);
-        return () => clearTimeout(timer);
-    }, []);
-
-    const settings = {
-        dots: false,
-        infinite: true,
-        autoplay: true,
-        speed: 2000,
-        autoplaySpeed: 3000,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        responsive: [
-            {
-                breakpoint: 767,
-                settings: {
-                    arrows: false
-                }
-            }
-        ]
-    };
+    const stories = [
+        {
+            title: "Learning Beyond Books",
+            content:
+                "This program not only improved my academic scores but also taught me teamwork, problem-solving, and communication — skills that helped me get my first internship.",
+            img: "/user/user_b.png",
+            name: "Riya Patel",
+            location: "Gujarat, India",
+        },
+        {
+            title: "Confidence Through Practice",
+            content:
+                "Public speaking used to terrify me. But the interactive sessions and constant encouragement from my coach changed everything.",
+            img: "/user/user_a.png",
+            name: "Aman Verma",
+            location: "Maharashtra, India",
+        },
+        {
+            title: "Turning Fear into Focus",
+            content:
+                "I joined the program after failing exams twice. The personalized plan helped rebuild basics and stay disciplined.",
+            img: "/user/user_e.png",
+            name: "Neha Sharma",
+            location: "Delhi, India",
+        },
+        {
+            title: "The Power of Consistency",
+            content:
+                "Small daily efforts lead to big results. The mentors taught me how to stay consistent and focused on progress.",
+            img: "/user/user_c.png",
+            name: "Rahul Mehta",
+            location: "Gujarat, India",
+        },
+        {
+            title: "Rediscovering My Passion",
+            content:
+                "Practical learning made subjects exciting again after switching streams. I now look forward to every session!",
+            img: "/user/user_f.png",
+            name: "Sneha Desai",
+            location: "Uttar Pradesh, India",
+        },
+        {
+            title: "From Struggling to Standing Tall",
+            content:
+                "Math was my weakest subject. With step-by-step modules, I now solve complex problems confidently.",
+            img: "/user/user_d.png",
+            name: "Ankit Gupta",
+            location: "Chhattisgarh, India",
+        },
+    ];
 
     return (
         <>
@@ -48,108 +78,62 @@ const AboutStories = () => {
                             />
                         </Col>
                     </Row>
+
                     <Row className="justify-content-center">
                         <Col md={8} sm={10}>
-                            <div className="storie_slider">
-                                <Slider {...settings}>
-                                    <div className="storie">
-                                        <div className="storiewrap">
-                                            <h5>Learning Beyond Books</h5>
-                                            <div className="content">This program not only improved my academic scores but also taught me teamwork, problem-solving, and communication — skills that helped me get my first internship.</div>
-                                            <div className="botinfo">
-                                                <div className="user">
-                                                    <img src="./user/user_b.png" alt="" />
-                                                </div>
-                                                <div className="username">
-                                                    <p>Riya Patel</p>
-                                                    <span>Gujarat, India</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="storie">
-                                        <div className="storiewrap">
-                                            <h5>Confidence Through Practice</h5>
-                                            <div className="content">Public speaking used to terrify me. But the interactive sessions and constant encouragement from my coach changed everything. Today, I lead presentations at my college with ease!</div>
-                                            <div className="botinfo">
-                                                <div className="user">
-                                                    <img src="./user/user_a.png" alt="" />
-                                                </div>
-                                                <div className="username">
-                                                    <p>Aman Verma</p>
-                                                    <span>Maharashtra, India</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="storie">
-                                        <div className="storiewrap">
-                                            <h5>Turning Fear into Focus</h5>
-                                            <div className="content">I joined the program after failing my exams twice. The personalized study plan helped me rebuild my basics, manage time, and stay disciplined. This year, I passed with distinction!</div>
-                                            <div className="botinfo">
-                                                <div className="user">
-                                                    <img src="./user/user_e.png" alt="" />
-                                                </div>
-                                                <div className="username">
-                                                    <p>Neha Sharma</p>
-                                                    <span>Delhi, India</span>
+                            <div className="swiperslider">
+
+                                <button ref={prevRef} className="swiper-prev"></button>
+
+                                <Swiper
+                                    modules={[Navigation, Autoplay]}
+                                    loop={true}
+                                    speed={1200}
+                                    autoplay={{
+                                        delay: 3000,
+                                        disableOnInteraction: false,
+                                        pauseOnMouseEnter: true,
+                                    }}
+                                    slidesPerView={1}
+                                    onInit={(swiper) => {
+                                        swiper.params.navigation.prevEl = prevRef.current;
+                                        swiper.params.navigation.nextEl = nextRef.current;
+                                        swiper.navigation.init();
+                                        swiper.navigation.update();
+                                    }}
+                                    breakpoints={{
+                                        767: { slidesPerView: 1 },
+                                    }}
+                                >
+                                    {stories.map((story, index) => (
+                                        <SwiperSlide key={index}>
+                                            <div className="storie">
+                                                <div className="storiewrap">
+                                                    <h5>{story.title}</h5>
+                                                    <div className="content">{story.content}</div>
+                                                    <div className="botinfo">
+                                                        <div className="user">
+                                                            <img src={story.img} alt={story.name} />
+                                                        </div>
+                                                        <div className="username">
+                                                            <p>{story.name}</p>
+                                                            <span>{story.location}</span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div className="storie">
-                                        <div className="storiewrap">
-                                            <h5>The Power of Consistency</h5>
-                                            <div className="content">I never believed small daily efforts could lead to big results until I joined this program. The mentors taught me how to stay consistent and focused on progress, not perfection.</div>
-                                            <div className="botinfo">
-                                                <div className="user">
-                                                    <img src="./user/user_c.png" alt="" />
-                                                </div>
-                                                <div className="username">
-                                                    <p>Rahul Mehta</p>
-                                                    <span>Gujarat, India</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="storie">
-                                        <div className="storiewrap">
-                                            <h5>Rediscovering My Passion</h5>
-                                            <div className="content">I lost interest in studies after switching streams, but the practical learning methods here made subjects exciting again. I now look forward to every session!</div>
-                                            <div className="botinfo">
-                                                <div className="user">
-                                                    <img src="./user/user_f.png" alt="" />
-                                                </div>
-                                                <div className="username">
-                                                    <p>Sneha Desai</p>
-                                                    <span>Uttar Pradesh, India</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="storie">
-                                        <div className="storiewrap">
-                                            <h5>From Struggling to Standing Tall</h5>
-                                            <div className="content">Math was always my weakest subject. Thanks to the mentors and step-by-step learning modules, I now solve complex problems confidently — and even help my classmates.</div>
-                                            <div className="botinfo">
-                                                <div className="user">
-                                                    <img src="./user/user_d.png" alt="" />
-                                                </div>
-                                                <div className="username">
-                                                    <p>Ankit Gupta</p>
-                                                    <span>Chhattisgarh, India</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </Slider>
+                                        </SwiperSlide>
+                                    ))}
+                                </Swiper>
+
+                                <button ref={nextRef} className="swiper-next"></button>
                             </div>
                         </Col>
                     </Row>
                 </Container>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default AboutStories
+export default AboutStories;
