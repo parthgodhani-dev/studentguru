@@ -22,14 +22,12 @@ const Editmember = () => {
         },
     });
 
-    // Slug transform function
     const slugTransform = useCallback((value) => {
         return value
             ? value.trim().toLowerCase().replace(/[^a-zA-Z\d\s]+/g, "-").replace(/\s/g, "-")
             : "";
     }, []);
 
-    // Auto slug update on name change
     useEffect(() => {
         const subscription = watch((value, { name }) => {
             if (name === "name") {
@@ -39,7 +37,6 @@ const Editmember = () => {
         return () => subscription.unsubscribe();
     }, [watch, slugTransform, setValue]);
 
-    // Fetch Team Member
     useEffect(() => {
         const fetchMember = async () => {
             try {
@@ -63,12 +60,10 @@ const Editmember = () => {
         fetchMember();
     }, [slug, setValue]);
 
-    // Submit Handler
     const editMember = async (data) => {
         try {
             let fileId = member.expertimg;
 
-            // Upload new image only if selected
             if (data.image && data.image[0]) {
                 const file = await teamServices.uploadFile(data.image[0]);
                 if (file) {
@@ -194,6 +189,7 @@ const Editmember = () => {
 
                                                 {member?.expertimg && (
                                                     <img
+                                                        loading="lazy"
                                                         src={teamServices.getFilePreview(member.expertimg)}
                                                         alt={member.name}
                                                         className="img-thumbnail mt-2"

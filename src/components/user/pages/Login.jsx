@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Col, Container, Row, Form, Button, Toast, ToastContainer } from 'react-bootstrap'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { login as authLogin } from '../../../store/authSlice'
 import { useDispatch } from 'react-redux'
 import authService from '../../../appwrite/auth'
@@ -11,10 +11,12 @@ import Headtitle from '../common/Headtitle'
 const Login = () => {
 
     const navigate = useNavigate()
+    const location = useLocation();
     const dispatch = useDispatch()
     const { register, handleSubmit } = useForm();
     const [error, setError] = useState("")
     const [showToast, setShowToast] = useState(false)
+    const from = location.state?.from || "/";
 
     const login = async(data) => {
         setError("")
@@ -28,7 +30,7 @@ const Login = () => {
                     
                     setTimeout(() => {
                         setShowToast(false)
-                        navigate("/")
+                        navigate(from, { replace: true });
                     }, 2000)
                 }
             }
@@ -59,7 +61,7 @@ const Login = () => {
 
                 <Row className='align-items-center justify-content-center flex-md-row flex-column-reverse gap-md-0 gap-3'>
                     <Col xl={7} lg={6} md={5}>
-                        <img src="/login.svg" alt="" />
+                        <img loading="lazy" src="/login.svg" alt="" />
                     </Col>
                     <Col xl={5} lg={6} md={7}>
                         <div className="authform">

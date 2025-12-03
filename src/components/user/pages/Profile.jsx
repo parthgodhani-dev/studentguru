@@ -33,7 +33,7 @@ const Profile = () => {
                     </Row>
                     <Row className='align-items-center justify-content-center flex-sm-row flex-column-reverse gap-sm-0 gap-3'>
                         <Col lg={6} md={4} sm={4}>
-                            <img src="/profile-data.svg" alt="" />
+                            <img loading="lazy" src="/profile-data.svg" alt="" />
                         </Col>
                         <Col lg={6} md={8} sm={8}>
                             <div className="authform">
@@ -58,7 +58,6 @@ const Profile = () => {
                                         <IconCalendarWeekFilled stroke={1} width={20} height={20} />
                                         <Form.Control type="date" value={formattedDate} readOnly />
                                     </Form.Group>
-                                    {/* <Button variant="secondary" type="submit" className="w-100">Register</Button> */}
                                 </Form>
                             </div>
                         </Col>

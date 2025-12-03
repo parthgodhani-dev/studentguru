@@ -61,7 +61,7 @@ const Whychoose = () => {
                         reasons.map((whychoose, index) => (
                             <Col lg={4} sm={6} key={index}>
                                 <div className="infobox">
-                                    <img src={whychoose.img} alt={whychoose.title} />
+                                    <img loading="lazy" src={whychoose.img} alt={whychoose.title} />
                                     <h4>{whychoose.title}</h4>
                                     <p>{whychoose.content}</p>
                                 </div>

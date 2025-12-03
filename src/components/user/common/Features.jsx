@@ -79,7 +79,7 @@ const Features = () => {
                                             <div className="features_box">
                                                 <div className="featwrap">
                                                     <div className="box_img">
-                                                        <img src={feature.src} alt="" />
+                                                        <img loading="lazy" src={feature.src} alt="" />
                                                     </div>
                                                     <h3>{feature.title}</h3>
                                                     <p>{feature.desc}</p>

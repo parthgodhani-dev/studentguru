@@ -18,7 +18,6 @@ export class Authservice {
   // Register new user
   async createAccount({ name, email, password, phone, dob }) {
     try {
-      // 1️⃣ Create the Appwrite account
       const userAccount = await this.account.create(
         ID.unique(),
         email,
@@ -26,10 +25,8 @@ export class Authservice {
         name
       );
 
-      // 2️⃣ Auto login (so we have a session)
       await this.account.createEmailPasswordSession(email, password);
 
-      // 3️⃣ Now create user profile document
       await this.databases.createDocument(
         config.appwriteDatabaseId,
         config.appwriteCollectionId,
@@ -42,7 +39,6 @@ export class Authservice {
         }
       );
 
-      // 4️⃣ Return user data
       const user = await this.account.get();
       return user;
     } catch (error) {
@@ -94,7 +90,7 @@ export class Authservice {
       return await this.account.deleteSessions();
     } catch (error) {
       console.log("Appwrite Auth :: logout :: error", error);
-      throw error; // ✅ pass error back
+      throw error;
     }
   }
 

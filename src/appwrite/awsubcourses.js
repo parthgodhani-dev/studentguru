@@ -1,6 +1,6 @@
 import config from "../config/config";
 import { Client, ID, Databases, Query } from "appwrite";
-import lessonsServices from "./awlessons"; // ✅ NEW IMPORT
+import lessonsServices from "./awlessons";
 
 export class SubCourseServices {
   client = new Client();
@@ -46,10 +46,10 @@ export class SubCourseServices {
   // DELETE SINGLE SUBCOURSE (with lessons) — UPDATED
   async deleteSubcourse(id) {
     try {
-      // 🚨 Step 1: Delete lessons under this subcourse
+      
       await lessonsServices.deleteLessonsBySubcourse(id);
 
-      // 🚨 Step 2: Delete the subcourse itself
+      
       return await this.databases.deleteDocument(
         config.appwriteMainCoursesDatabaseId,
         config.appwriteSubCoursesCollectionId,
@@ -69,7 +69,7 @@ export class SubCourseServices {
       if (!subs?.documents) return true;
 
       for (const sub of subs.documents) {
-        await this.deleteSubcourse(sub.$id); // auto deletes lessons too
+        await this.deleteSubcourse(sub.$id);
       }
 
       return true;

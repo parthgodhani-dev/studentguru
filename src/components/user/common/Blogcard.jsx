@@ -35,6 +35,7 @@ const Blogcard = ({ blogs }) => {
                         <div className="wrap">
                             <div className="box_img">
                                 <img
+                                    loading="lazy"
                                     src={blogServices.getFilePreview(blog.featuredimage)}
                                     alt={blog.title}
                                 />

@@ -16,7 +16,7 @@ const Courses = () => {
         From coding to design, each course is crafted to make learning simple,
         practical, and career-focused.
       </p>}
-      pageBannerimg={<img src="/courses-banner.svg" alt='courses-banner' />}
+      pageBannerimg={<img loading="lazy" src="/courses-banner.svg" alt='courses-banner' />}
     />
     <CourseCounter/>
     <CourseList />

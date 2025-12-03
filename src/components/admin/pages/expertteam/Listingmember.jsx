@@ -8,7 +8,6 @@ const Listingmember = () => {
     const [members, setMembers] = useState([])
     const [loading, setLoading] = useState(true)
 
-    // Fetch all team members
     const fetchMembers = async () => {
         try {
             const response = await teamServices.getAllTeam()
@@ -22,7 +21,6 @@ const Listingmember = () => {
         }
     }
 
-    // Handle status change
     const handleStatusChange = async (slug, newStatus) => {
         try {
             const member = members.find((m) => m.$id === slug)
@@ -48,7 +46,6 @@ const Listingmember = () => {
         }
     }
 
-    // Handle delete
     const handleDelete = async (slug) => {
         if (window.confirm("Are you sure you want to delete this team member?")) {
             try {
@@ -112,6 +109,7 @@ const Listingmember = () => {
                                                                 <td>
                                                                     {member.expertimg ? (
                                                                         <img
+                                                                            loading="lazy"
                                                                             className="img-thumbnail"
                                                                             src={teamServices.getFilePreview(member.expertimg)}
                                                                             alt={member.name}

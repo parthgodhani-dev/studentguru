@@ -14,7 +14,6 @@ const CourseCounter = () => {
             <Container>
                 <Row className="align-items-center justify-content-between">
 
-                    {/* Total Courses */}
                     <Col xl={4} md={6}>
                         <div className="box">
                             <div className="rbox">
@@ -30,7 +29,6 @@ const CourseCounter = () => {
                         </div>
                     </Col>
 
-                    {/* Active Learners */}
                     <Col xl={4} md={6}>
                         <div className="box">
                             <div className="rbox">
@@ -46,7 +44,6 @@ const CourseCounter = () => {
                         </div>
                     </Col>
 
-                    {/* Avg Course Duration */}
                     <Col xl={4} md={12}>
                         <div className="box">
                             <div className="rbox">

@@ -20,7 +20,6 @@ const Header = () => {
         navigate('/')
     }
 
-    // Common nav items
     const navItems = [
         { name: 'Home', slug: '/', active: true },
         { name: 'About', slug: '/about', active: true },
@@ -43,12 +42,10 @@ const Header = () => {
             const isInside = el.contains(e.target);
             const isLink = e.target.closest("a");
 
-            // Close when clicking ANY link inside
             if (expanded && isInside && isLink) {
                 setExpanded(false);
             }
 
-            // Close when clicking outside
             if (expanded && !isInside) {
                 setExpanded(false);
             }
@@ -63,7 +60,7 @@ const Header = () => {
             <Navbar expand="lg" expanded={expanded} onToggle={() => setExpanded(prev => !prev)}>
                 <Container>
                     <Navbar.Brand as={Link} to="/">
-                        <img src="studentguru_logo.png" alt="Student Logo" />
+                        <img loading="lazy" src="studentguru_logo.png" alt="Student Logo" />
                     </Navbar.Brand>
 
                     <div className="d-flex align-items-center gap-2">

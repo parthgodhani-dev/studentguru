@@ -8,7 +8,6 @@ const Listingcourse = () => {
     const [courses, setCourses] = useState([])
     const [loading, setLoading] = useState(true)
 
-    // Fetch all courses
     const fetchCourses = async () => {
         try {
             const response = await maincoursesServices.getAllCourses()
@@ -22,7 +21,6 @@ const Listingcourse = () => {
         }
     }
 
-    // Handle status update
     const handleStatusChange = async (slug, newStatus) => {
         try {
             const course = courses.find((c) => c.$id === slug)
@@ -45,7 +43,6 @@ const Listingcourse = () => {
         }
     }
 
-    // Delete course
     const handleDelete = async (slug) => {
         if (window.confirm("Are you sure you want to delete this course?")) {
             try {
@@ -109,6 +106,7 @@ const Listingcourse = () => {
                                                                 <td>
                                                                     {course.courseimg ? (
                                                                         <img
+                                                                            loading="lazy"
                                                                             className="img-thumbnail"
                                                                             src={maincoursesServices.getFilePreview(course.courseimg)}
                                                                             alt={course.coursetitle}

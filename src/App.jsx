@@ -9,7 +9,6 @@ import Loader from './components/Loader';
 import Protected from './components/Protected';
 
 // user pages
-import Worktest from './components/user/pages/Worktest';
 import Home from './components/user/pages/Home';
 import About from './components/user/pages/About';
 import Services from './components/user/pages/Services'
@@ -62,9 +61,9 @@ function App() {
     const checkUser = async () => {
       try {
         const currentUser = await authService.getCurrentUser();
-        console.log("🧠 currentUser:", currentUser);
-        console.log("🧠 Redux userData:", userData);
-        console.log("🧠 Role in App:", currentUser?.role);
+        // console.log("🧠 currentUser:", currentUser);
+        // console.log("🧠 Redux userData:", userData);
+        // console.log("🧠 Role in App:", currentUser?.role);
 
         if (currentUser) {
           dispatch(login(currentUser));
@@ -110,7 +109,6 @@ function App() {
                     {isLoggedIn && <AdminHeader onToggleSidebar={toggleSidebar} />}
                     <div className="dashboard-content">
                       <Routes>
-                        {/* <Route path="/admin" element={<Protected allowedRole="admin"><Dashboard /></Protected>} /> */}
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/listingblog" element={<Listingblog />} />
                         <Route path="/addblog" element={<Addblog />} />
@@ -140,7 +138,6 @@ function App() {
                   <Header />
                   <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path='/worktest' element={<Worktest />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/services" element={<Services />} />
                     <Route path="/courses" element={<Protected authentication={true}><Courses /></Protected>} />

@@ -13,9 +13,9 @@ const Professor = () => {
                       <Col lg={6} md={5}>
                           <div className="img_box d-lg-block d-none">
                               <div className="box">
-                                  <img src="/unifr.png" alt="" />
+                                  <img loading="lazy" src="/unifr.png" alt="" />
                               </div>
-                              <img src="/mr_johndoe.png" alt="mr_johndoe" />
+                              <img loading="lazy" src="/mr_johndoe.png" alt="mr_johndoe" />
                               <Link to="/register" className="link_box">
                                   <p className='mb-0'>Register For Webinar Now <IconCircleArrowRightFilled stroke={1} width={20} height={20} /></p>
                               </Link>
@@ -35,9 +35,9 @@ const Professor = () => {
                               />
                               <div className="img_box d-lg-none mb-3">
                                   <div className="box">
-                                      <img src="/unifr.png" alt="" />
+                                      <img loading="lazy" src="/unifr.png" alt="" />
                                   </div>
-                                  <img src="/mr_johndoe.png" alt="mr_johndoe" />
+                                  <img loading="lazy" src="/mr_johndoe.png" alt="mr_johndoe" />
                                   <Link to="/register" className="link_box">
                                       <p className='mb-0'>Register For Webinar Now <IconCircleArrowRightFilled stroke={1} width={20} height={20} /></p>
                                   </Link>

@@ -1,7 +1,6 @@
 import config from "../config/config";
 import { Client, ID, Databases, Storage, Query } from "appwrite";
 
-// NEW IMPORTS FOR CASCADE DELETE
 import subCourseServices from "./awsubcourses";
 import lessonsServices from "./awlessons";
 
@@ -68,26 +67,25 @@ export class MainCoursesServices {
     }
   }
 
-  // ================================
-  // 🔥 CASCADE DELETE MAIN COURSE
-  // ================================
+  
+  // CASCADE DELETE MAIN COURSE
   async deleteCourse(slug) {
     try {
-      // 1️⃣ Get all subcourses
+  
       const subcourses = await subCourseServices.getSubcourses(slug);
 
       if (subcourses?.documents) {
-        // Loop over subcourses
+  
         for (const sub of subcourses.documents) {
-          // 2️⃣ Delete lessons under each subcourse
+  
           await lessonsServices.deleteLessonsBySubcourse(sub.$id);
 
-          // 3️⃣ Delete the subcourse
+  
           await subCourseServices.deleteSubcourse(sub.$id);
         }
       }
 
-      // 4️⃣ Finally delete the main course
+  
       await this.databases.deleteDocument(
         config.appwriteMainCoursesDatabaseId,
         config.appwriteCoursesCollectionId,

@@ -14,9 +14,6 @@ const Bloglisting = () => {
     const [sortOrder, setSortOrder] = useState("desc")
     const [loading, setLoading] = useState(true);
 
-    // -------------------------------
-    // Helper: Parse blog tags safely
-    // -------------------------------
     const getTags = (tags) => {
         if (Array.isArray(tags)) return tags.map(t => t.toLowerCase().trim())
         if (typeof tags === "string") {
@@ -28,9 +25,6 @@ const Bloglisting = () => {
         return []
     }
 
-    // -------------------------------
-    // Fetch blogs only once + sorting
-    // -------------------------------
     useEffect(() => {
         const fetchBlogs = async () => {
             const response = await blogServices.getAllBlogs(sortOrder)
@@ -38,9 +32,8 @@ const Bloglisting = () => {
 
             setBlogs(docs)
 
-            // Collect all tags
             const tagList = docs.flatMap(blog => getTags(blog.tags))
-            setAllTags([...new Set(tagList)]) // unique tags
+            setAllTags([...new Set(tagList)])
 
             setLoading(false);
         }
@@ -48,9 +41,6 @@ const Bloglisting = () => {
         fetchBlogs()
     }, [sortOrder])
 
-    // -----------------------------------
-    // Filtered blogs (memoized for speed)
-    // -----------------------------------
     const filteredBlogs = useMemo(() => {
         const search = searchTerm.trim().toLowerCase()
 
@@ -98,18 +88,15 @@ const Bloglisting = () => {
                 </Row>
 
                 <Row className="justify-content-center flex-md-row flex-column-reverse gap-md-0 gap-4">
-                    {/* Blog list */}
                     <Col lg={9} md={8}>
                         <Row className="blogrow">
                             <Blogcard blogs={filteredBlogs} />
                         </Row>
                     </Col>
 
-                    {/* Sidebar */}
                     <Col lg={3} md={4}>
                         <div className="sidebar">
 
-                            {/* Search */}
                             <div className="box">
                                 <h6>Search</h6>
                                 <Form.Group className="field search">
@@ -123,7 +110,6 @@ const Bloglisting = () => {
                                 </Form.Group>
                             </div>
 
-                            {/* Tags */}
                             <div className="box">
                                 <h6>Tags</h6>
                                 <div className="taglist">
@@ -146,7 +132,6 @@ const Bloglisting = () => {
                                 </div>
                             </div>
 
-                            {/* Sort Order */}
                             <div className="box">
                                 <h6>Set order</h6>
                                 <Form.Group>

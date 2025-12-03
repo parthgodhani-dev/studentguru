@@ -13,7 +13,7 @@ const Footer = () => {
                 <Row className="justify-content-center">
                     <Col sm={12}>
                         <div className="footelogo">
-                            <img src="studentguru_logo_footer.png" alt="Student Guru" />
+                            <img loading="lazy" src="studentguru_logo_footer.png" alt="Student Guru" />
                         </div>
                     
                         <ul className='footlink'>

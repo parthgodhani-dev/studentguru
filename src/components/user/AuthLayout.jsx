@@ -9,17 +9,17 @@ export default function Protected({ children, authentication = true, allowedRole
   const userData = useSelector((state) => state.auth.userData);
 
   useEffect(() => {
-    // Not logged in, but page requires authentication
+    
     if (authentication && !authStatus) {
       navigate("/login");
     }
-    // Logged in, but page is public (like login/register)
+    
     else if (!authentication && authStatus) {
       navigate("/");
     }
-    // Role-based check
+    
     else if (allowedRole && userData?.role !== allowedRole) {
-      navigate("/"); // redirect to home if role mismatch
+      navigate("/"); 
     }
 
     setLoader(false);

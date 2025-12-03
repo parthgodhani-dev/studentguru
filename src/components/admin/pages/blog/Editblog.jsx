@@ -23,13 +23,13 @@ const Editblog = () => {
     },
   });
 
-  // Fetch blog by slug
+  
   useEffect(() => {
     const fetchBlog = async () => {
       const data = await blogServices.getBlog(slug);
       if (data) {
         setPost(data);
-        // populate form
+  
         setValue("title", data.title);
         setValue("slug", data.$id);
         setTags(
@@ -46,7 +46,7 @@ const Editblog = () => {
     fetchBlog();
   }, [slug, setValue]);
 
-  // Slug transform
+  
   const slugTransform = useCallback((value) => {
     return value
       ? value.trim().toLowerCase().replace(/[^a-zA-Z\d\s]+/g, "-").replace(/\s/g, "-")
@@ -66,7 +66,7 @@ const Editblog = () => {
     try {
       let fileId = post.featuredimage;
 
-      // Upload new image if selected
+      
       if (data.image && data.image[0]) {
         const file = await blogServices.uploadFile(data.image[0]);
         if (file) fileId = file.$id;
@@ -143,6 +143,7 @@ const Editblog = () => {
                         <Form.Control type="file" accept="image/*" {...register("image")} />
                         {post?.featuredimage && !getValues("image") && (
                           <img
+                            loading="lazy"
                             src={blogServices.getFilePreview(post.featuredimage)}
                             alt={post.title}
                             className="img-thumbnail mt-2"

@@ -26,8 +26,7 @@ const Aboutteam = () => {
             if (response && response.documents) {
                 setMemberdata(response.documents)
             }
-            console.log(response.documents.length);
-
+            
         } catch (error) {
             console.error("Error fetching member data:", error)
         } finally {
@@ -78,7 +77,7 @@ const Aboutteam = () => {
                                         autoplay={{
                                             delay: 500,
                                             disableOnInteraction: false,
-                                            pauseOnMouseEnter: true, // stop autoplay on hover
+                                            pauseOnMouseEnter: true,
                                         }}
                                         loop={true}
                                         onInit={(swiper) => {

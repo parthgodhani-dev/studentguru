@@ -21,7 +21,6 @@ const Addcourses = () => {
         },
     });
 
-    // slug convert
     const slugTransform = useCallback((value) => {
         return value
             ? value
@@ -32,7 +31,6 @@ const Addcourses = () => {
             : "";
     }, []);
 
-    // Auto slug update on title typing
     useEffect(() => {
         const subscription = watch((value, { name }) => {
             if (name === "coursetitle") {
@@ -42,7 +40,6 @@ const Addcourses = () => {
         return () => subscription.unsubscribe();
     }, [watch, slugTransform, setValue]);
 
-    // local state for builder
     const [modules, setModules] = useState([
         { subcoursename: "", lessons: [{ lessonstitle: "", lessonvideo: "" }] },
     ]);
@@ -91,18 +88,16 @@ const Addcourses = () => {
         });
     };
 
-    // Submit add course + subcourses + lessons
+    
     const addCourse = async (data) => {
         try {
             let fileId = null;
 
-            // Upload image if present
             if (data.image && data.image[0]) {
                 const file = await maincoursesServices.uploadFile(data.image[0]);
                 if (file) fileId = file.$id;
             }
 
-            // Create Course (use slug as document id)
             const course = await maincoursesServices.createCourse({
                 coursetitle: data.coursetitle,
                 slug: data.slug,
@@ -114,13 +109,11 @@ const Addcourses = () => {
 
             if (!course) throw new Error("Failed to create course");
 
-            console.log("COURSE CREATED:", course);
+            const courseid = course.$id || data.slug;
 
-            const courseid = course.$id || data.slug; // fallback to slug if needed
-
-            // Create subcourses and lessons sequentially
+            
             for (const module of modules) {
-                if (!module.subcoursename || module.subcoursename.trim() === "") continue; // skip empty
+                if (!module.subcoursename || module.subcoursename.trim() === "") continue;
 
                 const sub = await subCourseServices.createSubcourse({
                     courseid,
@@ -134,20 +127,16 @@ const Addcourses = () => {
 
                 const subcourseid = sub.$id;
 
-                console.log("SUBCOURSE CREATED:", sub);
-
-
-                // create lessons for this subcourse
+                
                 for (const lesson of module.lessons) {
-                    if (!lesson.lessonstitle || lesson.lessonstitle.trim() === "") continue; // skip empty
+                    if (!lesson.lessonstitle || lesson.lessonstitle.trim() === "") continue;
 
                     await lessonsServices.createLesson({
                         subcourseid: subcourseid,
                         lessontitle: lesson.lessonstitle,
                         lessonvideo: lesson.lessonvideo,
                     });
-
-                    console.log("LESSON CREATED:", lesson);
+                    
                 }
             }
 

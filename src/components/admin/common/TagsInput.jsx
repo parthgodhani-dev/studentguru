@@ -10,13 +10,13 @@ const TagsInput = ({ tags, setTags }) => {
         if (e.key === 'Enter' && inputValue.trim() !== '') {
             e.preventDefault();
 
-            // Split input by commas and trim spaces
+        
             const newTags = inputValue
                 .split(',')
                 .map((tag) => tag.trim())
                 .filter((tag) => tag !== '');
 
-            // Add only unique tags (avoid duplicates)
+        
             setTags((prevTags) => [...new Set([...prevTags, ...newTags])]);
 
             setInputValue('');

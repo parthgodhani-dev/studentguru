@@ -19,7 +19,6 @@ const Studentlove = () => {
 			if (response && response.documents) {
 				setReviews(response.documents);
 			}
-			console.log(response?.documents?.length);
 		} catch (error) {
 			console.error("Error fetching testimonials:", error);
 		} finally {
@@ -93,6 +92,7 @@ const Studentlove = () => {
 															<div className="botinfo">
 																<div className="user">
 																	<img
+																		loading="lazy"
 																		src={testimoServices.getFilePreview(review.userimg)}
 																		alt={review.name}
 																	/>

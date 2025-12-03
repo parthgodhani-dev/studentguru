@@ -113,7 +113,7 @@ const AboutStories = () => {
                                                     <div className="content">{story.content}</div>
                                                     <div className="botinfo">
                                                         <div className="user">
-                                                            <img src={story.img} alt={story.name} />
+                                                            <img loading="lazy" src={story.img} alt={story.name} />
                                                         </div>
                                                         <div className="username">
                                                             <p>{story.name}</p>

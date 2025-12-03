@@ -5,7 +5,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Headtitle from "../common/Headtitle";
 
 const Blogsingle = () => {
-    const { slug } = useParams(); // get blog id or slug from URL
+    const { slug } = useParams();
     const [blog, setBlog] = useState(null);
     const [loading, setLoading] = useState(true);
 

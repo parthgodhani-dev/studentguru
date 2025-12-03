@@ -53,7 +53,7 @@ const Changepassword = () => {
 
                     <Row className='align-items-center justify-content-center flex-sm-row flex-column-reverse gap-sm-0 gap-3'>
                         <Col xl={4} sm={4}>
-                            <img src="/changepassword.svg" alt="" />
+                            <img loading="lazy" src="/changepassword.svg" alt="" />
                         </Col>
 
                         <Col xl={5} sm={8}>
@@ -63,7 +63,6 @@ const Changepassword = () => {
 
                                 <Form onSubmit={handleSubmit(onSubmit)}>
 
-                                    {/* Old Password */}
                                     <Form.Group className="mb-3 field">
                                         <Form.Label>Old Password</Form.Label>
                                         <IconKeyFilled stroke={1} width={20} height={20} />
@@ -77,7 +76,6 @@ const Changepassword = () => {
                                         )}
                                     </Form.Group>
 
-                                    {/* New Password */}
                                     <Form.Group className="mb-3 field">
                                         <Form.Label>New Password</Form.Label>
                                         <IconKeyFilled stroke={1} width={20} height={20} />
@@ -96,7 +94,6 @@ const Changepassword = () => {
                                         )}
                                     </Form.Group>
 
-                                    {/* Confirm Password */}
                                     <Form.Group className="mb-3 field">
                                         <Form.Label>Confirm Password</Form.Label>
                                         <IconKeyFilled stroke={1} width={20} height={20} />
@@ -120,7 +117,6 @@ const Changepassword = () => {
                     </Row>
                 </Container>
 
-                {/* SUCCESS TOAST */}
                 <ToastContainer position="bottom-end" className="p-3">
                     <Toast
                         onClose={() => setShowToast(false)}

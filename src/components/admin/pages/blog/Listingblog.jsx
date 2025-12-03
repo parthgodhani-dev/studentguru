@@ -49,7 +49,6 @@ const Listingblog = () => {
         }
     }
 
-    // delete blog
     const handleDelete = async (slug) => {
         if (window.confirm("Are you sure you want to delete this blog?")) {
             const success = await blogServices.deleteBlog(slug);
@@ -104,7 +103,7 @@ const Listingblog = () => {
                                                     blogs.map((blog) => (
                                                         <tr key={blog.$id}>
                                                             <td>
-                                                                <img className='img-thumbnail' src={blogServices.getFilePreview(blog.featuredimage)} alt={blog.title} width={100} />
+                                                                <img loading="lazy" className='img-thumbnail' src={blogServices.getFilePreview(blog.featuredimage)} alt={blog.title} width={100} />
                                                             </td>
                                                             <td className='fw-medium'>{blog.title}</td>
                                                             <td className='fw-medium'>

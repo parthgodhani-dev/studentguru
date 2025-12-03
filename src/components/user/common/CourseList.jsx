@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Col, Container, Row, Card, Button, Spinner } from 'react-bootstrap'
+import { Col, Container, Row, Card } from 'react-bootstrap'
 import Headtitle from './Headtitle'
 import { Link } from 'react-router-dom'
 import maincoursesServices from "../../../appwrite/awmaincourses"
@@ -54,10 +54,9 @@ const CourseList = () => {
                             <Col lg={3} md={4} sm={6} key={index} className='d-flex align-items-stretch'>
                                 <Card>
                                     <Card.Body>
-                                        <img src={maincoursesServices.getFilePreview(course.courseimg)} alt={course.coursetitle} />
+                                        <img loading="lazy" src={maincoursesServices.getFilePreview(course.courseimg)} alt={course.coursetitle} />
                                         <h3>{course.coursetitle}</h3>
                                         <span>{course.description}</span>
-                                        {/* <div dangerouslySetInnerHTML={{ __html: course.briefinfo }}></div> */}
                                         <Link className='button' to={`/courses/${course.$id}`}>Learn Now</Link>
                                     </Card.Body>
                                 </Card>

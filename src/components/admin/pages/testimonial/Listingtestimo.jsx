@@ -8,7 +8,6 @@ const Listingtestimo = () => {
     const [reviews, setReviews] = useState([])
     const [loading, setLoading] = useState(true)
 
-    // Fetch testimonials
     const fetchReviews = async () => {
         try {
             const response = await testimoServices.getAllTestimo()
@@ -22,7 +21,6 @@ const Listingtestimo = () => {
         }
     }
 
-    // Handle status change
     const handleStatusChange = async (slug, newStatus) => {
         try {
             const testimo = reviews.find((b) => b.$id === slug)
@@ -46,7 +44,6 @@ const Listingtestimo = () => {
         }
     }
 
-    // Handle delete
     const handleDelete = async (slug) => {
         if (window.confirm("Are you sure you want to delete this testimonial?")) {
             try {
@@ -60,7 +57,6 @@ const Listingtestimo = () => {
         }
     }
 
-    // On component mount
     useEffect(() => {
         fetchReviews()
     }, [])
@@ -110,6 +106,7 @@ const Listingtestimo = () => {
                                                                 <td>
                                                                     {review.userimg ? (
                                                                         <img
+                                                                            loading="lazy"
                                                                             className="img-thumbnail"
                                                                             src={testimoServices.getFilePreview(review.userimg)}
                                                                             alt={review.name}

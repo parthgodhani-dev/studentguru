@@ -26,7 +26,7 @@ const Forgotpassword = () => {
 
                 <Row className='align-items-center justify-content-center flex-md-row flex-column-reverse gap-md-0 gap-3'>
                     <Col xl={4} lg={4} md={3}>
-                        <img src="/undraw_unlock.svg" alt="" />
+                        <img loading="lazy" src="/undraw_unlock.svg" alt="" />
                     </Col>
                     <Col xl={6} lg={6} md={9}>
                         <div className="authform">

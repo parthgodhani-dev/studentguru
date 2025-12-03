@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import Headtitle from "../common/Headtitle"; // adjust path if needed
+import Headtitle from "../common/Headtitle";
 
 const LearningPrograms = () => {
     const programs = [
@@ -83,7 +83,7 @@ const LearningPrograms = () => {
                         <Col key={index} md={4} sm={6} className=" d-flex align-items-stretch">
                             <Card className="mb-4">
                                 <Card.Body className="text-center p-4">
-                                    <img src={program.img} alt={program.title} />
+                                    <img loading="lazy" src={program.img} alt={program.title} />
                                     <h4>{program.title}</h4>
                                     <p>{program.description}</p>
                                     <strong>{program.duration}</strong>

@@ -33,14 +33,12 @@ const Addtestimo = () => {
 
     const addReview = async (data) => {
         try {
-            // 1. upload image
             const file = await testimoServices.uploadFile(data.image[0]);
             let fileId = null;
             if (file) {
                 fileId = file.$id;
             }
 
-            // 2. create post
             const testimo = await testimoServices.createTestimo({
                 ...data,
                 userimg: fileId,

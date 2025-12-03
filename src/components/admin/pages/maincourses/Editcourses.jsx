@@ -348,6 +348,7 @@ const Editcourse = () => {
 
                                                 {course?.courseimg && (
                                                     <img
+                                                        loading="lazy"
                                                         src={maincoursesServices.getFilePreview(course.courseimg)}
                                                         alt={course.coursetitle}
                                                         className="img-thumbnail mt-2"
@@ -374,12 +375,6 @@ const Editcourse = () => {
                                                                             value={module.subcoursename}
                                                                             onChange={(e) => updateModule(moduleIndex, e.target.value)}
                                                                         />
-                                                                        {/* show a small hint if this module is existing
-                                                                        {module.id ? (
-                                                                            <Form.Text className="text-muted">Existing subcourse (will be updated on save)</Form.Text>
-                                                                        ) : (
-                                                                            <Form.Text className="text-muted">New subcourse (will be created on save)</Form.Text>
-                                                                        )} */}
                                                                     </Form.Group>
 
                                                                     
@@ -428,16 +423,7 @@ const Editcourse = () => {
                                                                                 <Button variant="danger" onClick={() => deleteLesson(moduleIndex, lessonIndex)}>
                                                                                     <IconTrash size={20} stroke={2} />
                                                                                 </Button>
-                                                                            
                                                                         </div>
-
-                                                                        {/* <Col md={12} className="mt-2">
-                                                                            {lesson.id ? (
-                                                                                <Form.Text className="text-muted">Existing lesson (will be updated on save)</Form.Text>
-                                                                            ) : (
-                                                                                <Form.Text className="text-muted">New lesson (will be created on save)</Form.Text>
-                                                                            )}
-                                                                        </Col> */}
                                                                     </Row>
                                                                 </Card.Body>
                                                             </Card>

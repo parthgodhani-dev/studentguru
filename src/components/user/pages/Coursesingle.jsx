@@ -59,9 +59,6 @@ const Coursesingle = () => {
             }
             
             setLessons(lessonsData)
-        // console.log("data :", resp.$id);
-      // console.log("data :", subresp.documents);
-      console.log("data lessons :", lessonsData);
 
     } catch (error) {
       console.error("Error fetching courses all data:", error)

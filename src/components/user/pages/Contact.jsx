@@ -60,7 +60,7 @@ const Contact = () => {
                     </Col>
                     <Col md={4}>
                         <div className="cont_img">
-                            <img src="/contact_us.svg" alt="" />
+                            <img loading="lazy" src="/contact_us.svg" alt="" />
                         </div>
                         <div className="contact_info">
                             <div className="contact_box phone">

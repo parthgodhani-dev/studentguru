@@ -94,7 +94,7 @@ const Blogslider = () => {
                                                         <div className="blog_box">
                                                             <div className="wrap">
                                                                 <div className="box_img">
-                                                                    <img src={blogServices.getFilePreview(blog.featuredimage)} alt={blog.title} />
+                                                                    <img loading="lazy" src={blogServices.getFilePreview(blog.featuredimage)} alt={blog.title} />
                                                                 </div>
 
                                                                 <div className="featwrap">

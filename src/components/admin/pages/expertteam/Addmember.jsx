@@ -33,14 +33,14 @@ const Addmember = () => {
 
     const addTeam = async (data) => {
         try {
-            // 1. upload image
+            
             const file = await teamServices.uploadFile(data.mimage[0]);
             let fileId = null;
             if (file) {
                 fileId = file.$id;
             }
 
-            // 2. create post
+            
             const teammember = await teamServices.createTeam({
                 ...data,
                 expertimg: fileId,

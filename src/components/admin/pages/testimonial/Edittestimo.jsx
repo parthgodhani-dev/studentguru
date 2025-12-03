@@ -22,7 +22,6 @@ const Edittestimo = () => {
         },
     });
 
-    // Fetch testimonial
     useEffect(() => {
         const fetchReviews = async () => {
             try {
@@ -43,14 +42,12 @@ const Edittestimo = () => {
         fetchReviews();
     }, [slug, setValue]);
 
-    // Slug transform
     const slugTransform = useCallback((value) => {
         return value
             ? value.trim().toLowerCase().replace(/[^a-zA-Z\d\s]+/g, "-").replace(/\s/g, "-")
             : "";
     }, []);
 
-    // Auto slug update on name change
     useEffect(() => {
         const subscription = watch((value, { name }) => {
             if (name === "name") {
@@ -60,12 +57,10 @@ const Edittestimo = () => {
         return () => subscription.unsubscribe();
     }, [watch, slugTransform, setValue]);
 
-    // Submit handler
     const editTestimo = async (data) => {
         try {
             let fileId = reviews.userimg;
 
-            // Upload new image if selected
             if (data.image && data.image[0]) {
                 const file = await testimoServices.uploadFile(data.image[0]);
                 if (file) fileId = file.$id;
@@ -171,6 +166,7 @@ const Edittestimo = () => {
                                                 />
                                                 {reviews?.userimg && !getValues("image") && (
                                                     <img
+                                                        loading="lazy"
                                                         src={testimoServices.getFilePreview(reviews.userimg)}
                                                         alt={reviews.name}
                                                         className="img-thumbnail mt-2"
