@@ -6,13 +6,6 @@ import testimoServices from "../../../appwrite/awtestimo"
 
 const Studentlove = () => {
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            window.dispatchEvent(new Event("resize"));
-        }, 50);
-        return () => clearTimeout(timer);
-    }, []);
-
     const settings = {
         dots: false,
         infinite: true,

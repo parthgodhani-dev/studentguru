@@ -1,50 +1,12 @@
-import React, { useEffect } from 'react'
-import Slider from "react-slick";
-import { Col, Container, Row } from 'react-bootstrap'
+import React, { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+import { Col, Container, Row } from 'react-bootstrap';
 
 const Features = () => {
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            window.dispatchEvent(new Event("resize"));
-        }, 50);
-        return () => clearTimeout(timer);
-    }, []);
-
-    const settings = {
-        dots: false,
-        infinite: true,
-        autoplay: true,
-        speed: 1000,
-        autoplaySpeed: 1000,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 767,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    arrows: false
-                }
-            },
-            {
-                breakpoint: 479,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    arrows: false
-                }
-            }
-        ]
-    };
+    const prevRef = useRef(null);
+    const nextRef = useRef(null);
 
     const featuresSlideInfo = [
         {
@@ -79,34 +41,62 @@ const Features = () => {
         }
     ];
 
+    return (
+        <>
+            <section className="features_section">
+                <Container>
+                    <Row className="justify-content-center">
+                        <Col md={12}>
+                            <div className="slider">
 
-  return (
-    <>
-          <section className="features_section">
-            <Container>
-                <Row className="justify-content-center">
-                    <Col md={12}>
-                        <div className="Features_slider">
-                            <Slider {...settings}>
-                                {featuresSlideInfo.map((feature, index) => (
-                                    <div className="features_box" key={index}>
-                                        <div className="featwrap">
-                                            <div className="box_img">
-                                                <img src={feature.src} alt="" />
+                                <button ref={prevRef} className="custom-prev"></button>
+
+                                <Swiper
+                                    modules={[Navigation, Autoplay]}
+                                    loop={true}
+                                    speed={1000}
+                                    autoplay={{
+                                        delay: 500,
+                                        disableOnInteraction: false,
+                                        pauseOnMouseEnter: true,
+                                    }}
+                                    slidesPerView={4}
+                                    onInit={(swiper) => {
+                                        swiper.params.navigation.prevEl = prevRef.current;
+                                        swiper.params.navigation.nextEl = nextRef.current;
+                                        swiper.navigation.init();
+                                        swiper.navigation.update();
+                                    }}
+                                    breakpoints={{
+                                        1200: { slidesPerView: 4 },
+                                        992: { slidesPerView: 3 },
+                                        768: { slidesPerView: 2 },
+                                        0: { slidesPerView: 1 }
+                                    }}
+                                >
+                                    {featuresSlideInfo.map((feature, index) => (
+                                        <SwiperSlide key={index}>
+                                            <div className="features_box">
+                                                <div className="featwrap">
+                                                    <div className="box_img">
+                                                        <img src={feature.src} alt="" />
+                                                    </div>
+                                                    <h3>{feature.title}</h3>
+                                                    <p>{feature.desc}</p>
+                                                </div>
                                             </div>
-                                            <h3>{feature.title}</h3>
-                                            <p>{feature.desc}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </Slider>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
-        </section>
-    </>
-  )
+                                        </SwiperSlide>
+                                    ))}
+                                </Swiper>
+
+                                <button ref={nextRef} className="custom-next"></button>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+            </section>
+        </>
+    )
 }
 
 export default Features

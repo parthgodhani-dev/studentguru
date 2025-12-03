@@ -67,6 +67,24 @@ h6, h6>span .h6{display: block;font-size: 24px;font-weight: 600; line-height: 1;
 @keyframes l3 {100% {background-size: 100%}}
 
 
+/* swiper slider */
+.slider{position: relative;}
+.slider .swiper-slide{height: auto !important;display: flex !important;}
+.slider .swiper-slide .features_box{height: 100%;display: flex;}
+.custom-prev,.custom-next {position: absolute;top: 50%;transform: translateY(-50%);z-index: 20;cursor: pointer;background-color: var(--primary);padding: 8px;border-radius: 50%;border: 0;width: 40px;height: 40px;}
+.custom-prev:before, .custom-next::before{content: "";display: block;width: 20px;height: 20px;background-color: #000;-webkit-mask-image: url('../public/sliderarrow.svg');-webkit-mask-repeat: no-repeat;-webkit-mask-position: center;-webkit-mask-size: contain;mask-image: url('../public/sliderarrow.svg');mask-repeat: no-repeat;mask-position: center;mask-size: contain;position: absolute;top: 50%;left: 50%;}
+.custom-prev{left: -40px;top: 50%;transform: translate(0, -50%);}
+.custom-next{right: -40px;top: 50%;transform: translate(0, -50%);}
+.custom-prev:before{transform: translate(-50%, -50%) rotate(180deg);}
+.custom-next::before {transform: translate(-50%, -50%);}
+.custom-next:hover::before, .custom-next:focus::before, .custom-prev:hover::before,.custom-prev:focus::before {background-color: var(--light);}
+.custom-next:hover,.custom-next:focus, .custom-next:active, .custom-prev:hover,.custom-prev:focus, .custom-prev:active{background-color: var(--secondary);}
+.custom-next:hover:before, .custom-next:focus:before, .features_section .custom-next:active:before, .custom-prev:hover:before, .custom-prev:focus:before, .features_section .custom-prev:active:before{color: var(--primary);}
+
+
+
+
+
 /* heading */
 .headtitle{display: block;width: 100%;text-align: center;margin-bottom: 40px;}
 .headtitle em{display: block;font-size: 26px;font-weight: 700;line-height: 1.3;margin-bottom: 0;letter-spacing: 1px;color: var(--secondary);font-family: var(--font-squarepeg);}
@@ -90,7 +108,7 @@ h6, h6>span .h6{display: block;font-size: 24px;font-weight: 600; line-height: 1;
 
 
 .features_section {display: block;width: 100%;padding: 0;margin-top: -138px;position: relative;z-index: 11;}
-.features_section .features_box {padding: 0 10px;}
+.features_section .features_box {padding: 0 12px;}
 .features_section .features_box .featwrap{border: 2px solid;padding: 30px 30px 20px 30px;border-radius: 60px 10px 10px 10px;}
 .features_section .features_box .box_img{display: inline-flex;background-color: var(--secondary);padding: 20px;align-items: center;justify-content: center;border-radius: 50%;margin-bottom: 20px;box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;}
 .features_section .features_box .box_img img{max-width: 60px;height: auto;width: 100%;}
