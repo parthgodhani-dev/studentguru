@@ -61,7 +61,7 @@ const Login = () => {
 
                 <Row className='align-items-center justify-content-center flex-md-row flex-column-reverse gap-md-0 gap-3'>
                     <Col xl={7} lg={6} md={5}>
-                        <img loading="lazy" src="/login.svg" alt="" />
+                        <img loading="lazy" src="/login.svg" alt="login" />
                     </Col>
                     <Col xl={5} lg={6} md={7}>
                         <div className="authform">

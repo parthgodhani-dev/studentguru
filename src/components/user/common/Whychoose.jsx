@@ -7,32 +7,32 @@ const Whychoose = () => {
 
     const reasons = [
         {
-            img: "/consulting.png",
+            img: "/consulting.webp",
             title: "Expert Mentors",
             content: "Learn directly from industry professionals who guide you at every step.",
         },
         {
-            img: "/knowledge.png",
+            img: "/knowledge.webp",
             title: "Personalized Learning",
             content: "Every student gets a custom learning path designed for their goals.",
         },
         {
-            img: "/flexible.png",
+            img: "/flexible.webp",
             title: "Real-World Projects",
             content: "Build real projects to strengthen your skills and portfolio.",
         },
         {
-            img: "/goal.png",
+            img: "/goal.webp",
             title: "Career Support",
             content: "Get resume help, mock interviews, and placement guidance.",
         },
         {
-            img: "/project.png",
+            img: "/project.webp",
             title: "Flexible Schedule",
             content: "Learn anytime, anywhere with our self-paced modules.",
         },
         {
-            img: "/help.png",
+            img: "/help.webp",
             title: "Community Support",
             content: "Join a vibrant community of students and mentors who help you grow.",
         },

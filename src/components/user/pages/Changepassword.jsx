@@ -53,7 +53,7 @@ const Changepassword = () => {
 
                     <Row className='align-items-center justify-content-center flex-sm-row flex-column-reverse gap-sm-0 gap-3'>
                         <Col xl={4} sm={4}>
-                            <img loading="lazy" src="/changepassword.svg" alt="" />
+                            <img loading="lazy" src="/changepassword.svg" alt="changepassword" />
                         </Col>
 
                         <Col xl={5} sm={8}>

@@ -10,32 +10,32 @@ const Features = () => {
 
     const featuresSlideInfo = [
         {
-            src: "/icons/online-learning.png",
+            src: "/icons/online-learning.webp",
             title: "Learn Anytime, Anywhere",
             desc: "Access all your courses and live sessions online — study at your own pace from any device."
         },
         {
-            src: "/icons/operation.png",
+            src: "/icons/operation.webp",
             title: "Instant Enrollment",
             desc: "Join your favorite program instantly after sign-up and start learning without any delays."
         },
         {
-            src: "/icons/best-seller.png",
+            src: "/icons/best-seller.webp",
             title: "Our Expert Mentors",
             desc: "Learn directly from industry professionals who share real-world knowledge and experience."
         },
         {
-            src: "/icons/quote.png",
+            src: "/icons/quote.webp",
             title: "Personalized Guidance",
             desc: "Get customized learning paths, career advice, and progress tracking tailored just for you."
         },
         {
-            src: "/icons/buy.png",
+            src: "/icons/buy.webp",
             title: "Practical Learning",
             desc: "Go beyond theory with hands-on projects, assignments, and real-world challenges."
         },
         {
-            src: "/icons/order.png",
+            src: "/icons/order.webp",
             title: "Certification & Recognition",
             desc: "Earn verified certificates for each program — showcase your achievements on LinkedIn and resumes."
         }
@@ -79,7 +79,7 @@ const Features = () => {
                                             <div className="features_box">
                                                 <div className="featwrap">
                                                     <div className="box_img">
-                                                        <img loading="lazy" src={feature.src} alt="" />
+                                                        <img loading="lazy" src={feature.src} alt={feature.title} />
                                                     </div>
                                                     <h3>{feature.title}</h3>
                                                     <p>{feature.desc}</p>

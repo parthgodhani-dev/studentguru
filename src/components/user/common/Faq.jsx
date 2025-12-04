@@ -55,7 +55,7 @@ const Faq= () => {
                 </Row>
                 <Row className="align-items-end justify-content-between gap-md-0 gap-4">
                     <Col lg={4} md={3}>
-                        <img loading="lazy" src="/faq.svg" alt="" />
+                        <img loading="lazy" src="/faq.svg" alt="faq" />
                     </Col>
                     <Col lg={7} md={9}>
                         <Accordion defaultActiveKey="0" flush>

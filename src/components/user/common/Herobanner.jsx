@@ -17,8 +17,8 @@ const Herobanner = () => {
                     </Col>
                     <Col xl={6} lg={6} md={5}>
                         <div className="big_img">
-                              <img loading="lazy" className='d-lg-block d-none' src="/banner_h.svg" alt="" />
-                              <img loading="lazy" className='d-lg-none d-block' src="/hbhome.svg" alt="" />
+                              <img src="/banner_h.svg" alt="Banner" class="d-lg-block d-none" fetchpriority="high"  decoding="async" />
+                              <img className='d-lg-none d-block' src="/hbhome.svg" alt="Banner" fetchpriority="high" decoding="async" />
                         </div>
                     </Col>
                 </Row>

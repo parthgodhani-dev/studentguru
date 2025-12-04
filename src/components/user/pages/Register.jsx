@@ -54,7 +54,7 @@ const Register = () => {
                     </Row>
                     <Row className="justify-content-center align-items-center flex-md-row flex-column-reverse gap-md-0 gap-3">
                         <Col xl={6} lg={5} md={5}>
-                            <img loading="lazy" src="/register.svg" alt="" />
+                            <img loading="lazy" src="/register.svg" alt="Registration" />
                         </Col>
                         <Col xl={6} lg={7} md={7}>
                             {error && <p className="text-danger text-center">{error}</p>}

@@ -10,7 +10,7 @@ const Notfound = () => {
         <Container>
             <Row className='flex-column align-items-center justify-content-between'>
                 <Col md={6}>
-                    <img loading="lazy" src="/notfound.svg" alt="" width={350} />
+                    <img loading="lazy" src="/notfound.svg" alt="Oops! Page Not Found" width={350} />
                 </Col>
                 <Col md={6}>
                     <Headtitle

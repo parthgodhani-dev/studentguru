@@ -25,7 +25,7 @@ const AboutContent = () => {
                 <Row className='align-items-center justify-content-between rowpy'>
                     <Col lg={6} md={5}>
                         <div className="aboutimg">
-                            <img loading="lazy" src="/about_c.svg" alt="" />
+                            <img loading="lazy" src="/about_c.svg" alt="Bulding talier-mode projects and a portfolio to find a job" />
                         </div>
                     </Col>
                     <Col lg={5} md={6}>
@@ -46,14 +46,14 @@ const AboutContent = () => {
                     </Col>
                     <Col lg={6} md={5}>
                         <div className="aboutimg">
-                            <img loading="lazy" src="/about_a.svg" alt="" />
+                            <img loading="lazy" src="/about_a.svg" alt="Realizing your first missions as a freelance developer" />
                         </div>
                     </Col>
                 </Row>
                 <Row className='align-items-center justify-content-between rowpy'>
                     <Col lg={6} md={5}>
                         <div className="aboutimg">
-                            <img loading="lazy" src="/about_b.svg" alt="" />
+                            <img loading="lazy" src="/about_b.svg" alt="Starting at first job as a juniior devloper." />
                         </div>
                     </Col>
                     <Col lg={5} md={6}>
