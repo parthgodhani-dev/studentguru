@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate, Link } from "react-router-dom";
 import {login , logout} from './store/authSlice'
 import authService from './appwrite/auth'
@@ -45,14 +45,13 @@ import Addcourse from './components/admin/pages/maincourses/Addcourses';
 import Editcourse from './components/admin/pages/maincourses/Editcourses';
 
 
-
-
 function App() {
 
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(true);
   const [isSidebarActive, setSidebarActive] = useState(false);
+  const sidebarRef = useRef(null); 
   const toggleSidebar = () => {
     setSidebarActive(!isSidebarActive);
   };
@@ -81,6 +80,23 @@ function App() {
     checkUser();
   }, [dispatch]);
 
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (window.innerWidth >= 1281) return;
+      if (!isSidebarActive) return;
+
+      if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
+        setSidebarActive(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isSidebarActive]);
+
   if (loading) return <Loader message="Loading..." />;
 
   const isAdmin = userData?.role;
@@ -105,7 +121,7 @@ function App() {
             />
             <Route path="/admin/*" element={isAdmin === "admin" ? (
               <div className={`dashboard-main ${isSidebarActive ?  "dashboard-compact" : ""}`}>
-                    {isLoggedIn && <AdminSidebar onToggleSidebar={toggleSidebar} />}
+                    {isLoggedIn && <AdminSidebar ref={sidebarRef} onCloseSidebar={() => setSidebarActive(false)} onToggleSidebar={toggleSidebar} />}
                     {isLoggedIn && <AdminHeader onToggleSidebar={toggleSidebar} />}
                     <div className="dashboard-content">
                       <Routes>

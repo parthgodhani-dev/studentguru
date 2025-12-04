@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef} from "react";
 import { IconX, IconHomeSpark, IconHome, IconLogout, IconListDetails, IconList, IconPlaylistAdd } from '@tabler/icons-react';
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { logout } from "../../../store/authSlice";
 import authService from "../../../appwrite/auth";
 
-const Sidebar = ({ onToggleSidebar }) => {
+const Sidebar = forwardRef(({ onToggleSidebar, onCloseSidebar }, ref) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -25,18 +25,18 @@ const Sidebar = ({ onToggleSidebar }) => {
 
   return (
     <>
-      <div className="dashboard-nav">
+      <div className="dashboard-nav" ref={ref}>
         <header>
           <a href="#" className="menu-toggle" id="toggleSidebarBtn" onClick={onToggleSidebar}>
             <IconX size={30} stroke={2} />
           </a>
-          <Link className="brand-logo" to="/admin">
+          <Link className="brand-logo" to="/admin" onClick={onCloseSidebar}>
             <img loading="lazy" src="/studentguru_logo_footer.png" alt="studentguru_logo" width={170} />
           </Link>
         </header>
         <nav className="dashboard-nav-list">
           <Nav className="dashboard-nav-list">
-            <Link className="dashboard-nav-item active" to="/admin/dashboard">
+            <Link className="dashboard-nav-item active" to="/admin/dashboard" onClick={onCloseSidebar}>
               <IconHomeSpark size={20} stroke={2} /> Dashboard
             </Link>
 
@@ -45,8 +45,8 @@ const Sidebar = ({ onToggleSidebar }) => {
                 <IconListDetails size={20} stroke={2} /> Course
               </Link>
               <div className="dashboard-nav-dropdown-menu">
-                <Link to="/admin/addcourse" className="dashboard-nav-dropdown-item"><IconPlaylistAdd size={20} stroke={2} /> Add Course</Link>
-                <Link to="/admin/listingcourse" className="dashboard-nav-dropdown-item"><IconList size={20} stroke={2} /> View Course</Link>
+                <Link to="/admin/addcourse" className="dashboard-nav-dropdown-item" onClick={onCloseSidebar}><IconPlaylistAdd size={20} stroke={2} /> Add Course</Link>
+                <Link to="/admin/listingcourse" className="dashboard-nav-dropdown-item" onClick={onCloseSidebar}><IconList size={20} stroke={2} /> View Course</Link>
               </div>
             </div>
 
@@ -55,8 +55,8 @@ const Sidebar = ({ onToggleSidebar }) => {
                 <IconListDetails size={20} stroke={2} /> Team Member
               </Link>
               <div className="dashboard-nav-dropdown-menu">
-                <Link to="/admin/addmember" className="dashboard-nav-dropdown-item"><IconPlaylistAdd size={20} stroke={2} /> Add Member</Link>
-                <Link to="/admin/listingmember" className="dashboard-nav-dropdown-item"><IconList size={20} stroke={2} /> View Member</Link>
+                <Link to="/admin/addmember" className="dashboard-nav-dropdown-item" onClick={onCloseSidebar}><IconPlaylistAdd size={20} stroke={2} /> Add Member</Link>
+                <Link to="/admin/listingmember" className="dashboard-nav-dropdown-item" onClick={onCloseSidebar}><IconList size={20} stroke={2} /> View Member</Link>
               </div>
             </div>
 
@@ -65,8 +65,8 @@ const Sidebar = ({ onToggleSidebar }) => {
                 <IconListDetails size={20} stroke={2} /> Testimonial
               </Link>
               <div className="dashboard-nav-dropdown-menu">
-                <Link to="/admin/addtestimonial" className="dashboard-nav-dropdown-item"><IconPlaylistAdd size={20} stroke={2} /> Add Testimonial</Link>
-                <Link to="/admin/listingtestimonial" className="dashboard-nav-dropdown-item"><IconList size={20} stroke={2} /> View Testimonial</Link>
+                <Link to="/admin/addtestimonial" className="dashboard-nav-dropdown-item" onClick={onCloseSidebar}><IconPlaylistAdd size={20} stroke={2} /> Add Testimonial</Link>
+                <Link to="/admin/listingtestimonial" className="dashboard-nav-dropdown-item" onClick={onCloseSidebar}><IconList size={20} stroke={2} /> View Testimonial</Link>
               </div>
             </div>
 
@@ -75,15 +75,15 @@ const Sidebar = ({ onToggleSidebar }) => {
                 <IconListDetails size={20} stroke={2} /> Blog
               </Link>
               <div className="dashboard-nav-dropdown-menu">
-                <Link to="/admin/addblog" className="dashboard-nav-dropdown-item"><IconPlaylistAdd size={20} stroke={2} /> Add Blog</Link>
-                <Link to="/admin/listingblog" className="dashboard-nav-dropdown-item"><IconList size={20} stroke={2} /> View Blog</Link>
+                <Link to="/admin/addblog" className="dashboard-nav-dropdown-item" onClick={onCloseSidebar}><IconPlaylistAdd size={20} stroke={2} /> Add Blog</Link>
+                <Link to="/admin/listingblog" className="dashboard-nav-dropdown-item" onClick={onCloseSidebar}><IconList size={20} stroke={2} /> View Blog</Link>
               </div>
             </div>
 
             
 
             <div className="nav-item-divider" />
-            <Link className="dashboard-nav-item" to={"/"}>
+            <Link className="dashboard-nav-item" to={"/"} onClick={onCloseSidebar}>
               <IconHome size={20} stroke={2} />
               Home
             </Link>
@@ -96,5 +96,5 @@ const Sidebar = ({ onToggleSidebar }) => {
       </div>
     </>
   );
-};
+});
 export default Sidebar;
